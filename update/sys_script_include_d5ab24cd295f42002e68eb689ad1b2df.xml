@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_siam_light.SIAMQueue</api_name>
+        <client_callable>false</client_callable>
+        <description>This class handles creation and updating records in the SIAM queue table</description>
+        <name>SIAMQueue</name>
+        <script><![CDATA[var SIAMQueue = Class.create();
+SIAMQueue.prototype = {
+	
+	QUEUE: 'x_snc_siam_light_queue',
+	MSGTYPE: 'x_snc_siam_light_message_type',
+	FLDMAP: 'x_snc_siam_light_field_map',
+	
+	initialize: function(msgType /* sys_id of message Type */ , target /* sys_id of target system */) {
+		
+		this.msgType = new GlideRecord(this.MSGTYPE);
+		if (!this.msgType.get(msgType)) {
+			throw new Error('Invalid Message Type');
+		}
+		
+		// get complete fieldmap
+		this.field_map = new GlideRecord(this.FLDMAP);
+		this.field_map.addQuery('message_type', msgType);
+		this.field_map.query();
+		
+		// get coalesce fields for later
+		this.coalesce_fields = new GlideRecord(this.FLDMAP);
+		this.coalesce_fields.addQuery('message_type', msgType);
+		this.coalesce_fields.addQuery('coalesce', 'true');
+		this.coalesce_fields.query();
+		
+		this.target = target;
+	},
+	
+	setSource: function (source_record /* GlideRecord */) {
+		this.logger = new SIAMLogger(source_record);
+		
+		if (source_record.getRecordClassName() == this.QUEUE) {
+			this.queue = source_record;
+			this.record = new global.JSON().decode(source_record.payload);
+		} else {
+			this.reference_table = source_record.getRecordClassName();
+			this.reference_sys_id = source_record.sys_id;
+			
+			this.record = {};
+			while (this.field_map.next()) {
+				var output_type = this.field_map.output_value;
+				if ( output_type == 'database') {
+					this.record[this.field_map.external_fieldname] = source_record.getValue(this.field_map.field);
+				} else if (output_type == 'display') {
+					this.record[this.field_map.external_fieldname] = source_record.getDisplayValue(this.field_map.field);
+				}
+				this.logger.logDebug('Mapped ' + this.field_map.field + ' to ' + this.field_map.external_fieldname + ' with value <' + this.record[this.field_map.external_fieldname] +'>');
+			}
+		}
+	},
+	
+	updateRecord: function() {
+		var gr_target;
+		
+		// match record against database if possible
+		var gr_search = new GlideRecord(this.msgType.table);
+		while (this.coalesce_fields.next()) {
+			gr_search.addQuery(this.coalesce_fields.field, this.record[this.coalesce_fields.external_fieldname]);
+		}
+		var enc_query = gr_search.getEncodedQuery();
+		if (!gs.nil(enc_query)) {
+			this.logger.logDebug('Search existing records with query: ' + enc_query);
+			gr_search.query();
+			if ( gr_search.next()) {
+				gr_target = gr_search;
+				if (this.queue.action != 'update' && this.queue.action != 'insert_or_update') {
+					this.logger.logError('Record already exists, need update action');
+					return false;
+				}
+				this.logger.logInfo('Found existing target record: ' + gr_target.getDisplayValue());
+			}
+		}
+		// if nothing is assigned till now, create new record
+		if (gs.nil(gr_target))  {
+			gr_target =  new GlideRecord(this.msgType.table);
+			if (this.queue.action != 'insert' && this.queue.action != 'insert_or_update') {
+				this.logger.logError('Record does not exist, need insert action');
+				return false;
+			}
+			this.logger.logInfo('No existing target found, creating new record');
+		}
+		
+		while (this.field_map.next()) {
+			this._setRecordValue(gr_target, this.field_map.field, this.record[this.field_map.external_fieldname]);
+			this.logger.logDebug('Mapped ' + this.field_map.external_fieldname + ' to ' + this.field_map.field + ' with value <' + this.record[this.field_map.external_fieldname] +'>');
+		}
+		
+		var rc = gr_target.update();
+		this.queue.reference_table = gr_target.getRecordClassName();
+		this.queue.reference_record = gr_target.sys_id;
+		this.queue.update();
+		
+		if (rc == null) {
+			this.logger.logError('Error during save');
+			return false;
+		}
+		
+		return true;
+		
+	},
+	
+	createOutput: function() {
+		var gr_queue = new GlideRecord('x_snc_siam_light_queue');
+		gr_queue.initialize();
+		gr_queue.direction = 'output';
+		gr_queue.action = 'insert';
+		gr_queue.state = 'ready';
+		gr_queue.message_type = this.msgType.sys_id;
+		gr_queue.target = this.target;
+		gr_queue.payload = new global.JSON().encode(this.record);
+		gr_queue.reference_table = this.reference_table;
+		gr_queue.reference_record = this.reference_sys_id;
+		var qu_id = gr_queue.insert();
+		this.logger.updateQueueReference(qu_id);
+	},
+	
+	_setRecordValue: function(gr, field, value) {
+		if (!gs.nil(value)) {
+			gs.info('Setting ' + field + ' to ' + field);
+			gr.setValue(field, value);
+		}
+	},
+	
+	type: 'SIAMQueue'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-10-22 12:55:49</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
+        <sys_mod_count>46</sys_mod_count>
+        <sys_name>SIAMQueue</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-01-18 10:01:43</sys_updated_on>
+    </sys_script_include>
+</record_update>

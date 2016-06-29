@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_script_access">
+    <sys_scope_script_access action="INSERT_OR_UPDATE">
+        <example_stack_trace>Default-thread-78
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.getCurrentStackTrace(ScopeAccessProvider.java:231)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.record(ScopeAccessProvider.java:200)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.access$100(ScopeAccessProvider.java:80)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider.recordAccess(ScopeAccessProvider.java:63)
+	com.glide.sys.fencing.dependency.ScopeAccessRecorder.record(ScopeAccessRecorder.java:13)
+	com.glide.script.system.ASystemInclude.recordCrossScopeAccess(ASystemInclude.java:123)
+	com.glide.script.system.ASystemInclude.include(ASystemInclude.java:106)
+	com.glide.script.AGlideRhinoScopeHandler.isScriptInclude(AGlideRhinoScopeHandler.java:43)
+	com.glide.script.GlideRhinoScopeHandler.found(GlideRhinoScopeHandler.java:24)
+	com.glide.script.ARhinoScope.get(ARhinoScope.java:75)
+	com.glide.script.RhinoScope.get(RhinoScope.java:51)
+	com.glide.script.PackageRhinoGlobalScope.get(PackageRhinoGlobalScope.java:34)
+	com.glide.script.PackageParent.isObjectInGlobal(PackageParent.java:50)
+	com.glide.script.PackageParent.get(PackageParent.java:31)
+	org.mozilla.javascript.ScriptableObject.getProperty(ScriptableObject.java:1478)
+	org.mozilla.javascript.ScriptRuntime.name(ScriptRuntime.java:1083)
+	org.mozilla.javascript.gen.c9681.call(&lt;refname&gt;:1)
+	org.mozilla.javascript.gen.c9681.exec(&lt;refname&gt;)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:63)
+	com.glide.script.Evaluator.evaluateString(Evaluator.java:91)
+	com.glide.script.GlideRhinoHelper.evaluateAsString(GlideRhinoHelper.java:130)
+	com.glide.script.ActionScript.conditionalEval(ActionScript.java:83)
+	com.glide.script.ActionScript.execute(ActionScript.java:69)
+	com.glide.script.ActionScriptProcessor.processScript(ActionScriptProcessor.java:139)
+	com.glide.script.Action.process(Action.java:115)
+	com.glide.ui.RedirectTransaction.invokeAction(RedirectTransaction.java:421)
+	com.glide.ui.RedirectTransaction.handleActions(RedirectTransaction.java:388)
+	com.glide.ui.RedirectTransaction.inboundActions(RedirectTransaction.java:224)
+	com.glide.ui.RedirectTransaction.process(RedirectTransaction.java:93)
+	com.glide.ui.GlideServletUITransaction.process(GlideServletUITransaction.java:72)
+	com.glide.processors.AProcessor.runProcessor(AProcessor.java:404)
+	com.glide.processors.AProcessor.processTransaction(AProcessor.java:178)
+	com.glide.processors.ProcessorRegistry.process(ProcessorRegistry.java:165)
+	com.glide.ui.GlideServletTransaction.process(GlideServletTransaction.java:32)
+	com.glide.sys.ServletTransaction.run(ServletTransaction.java:34)
+	java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+	java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+	java.lang.Thread.run(Thread.java:682)
+</example_stack_trace>
+        <script_name>ArrayUtil</script_name>
+        <source_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</source_scope>
+        <sys_class_name>sys_scope_script_access</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-01-18 12:27:30</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>c325f5d147cd5e002e688d90f7093577</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ArrayUtil</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_scope_script_access_c325f5d147cd5e002e688d90f7093577</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-01-18 12:27:30</sys_updated_on>
+        <target_scope display_value="Global">global</target_scope>
+    </sys_scope_script_access>
+</record_update>

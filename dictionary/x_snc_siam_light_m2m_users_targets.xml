@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Siam Light M2m Users Targets" max_length="40" name="x_snc_siam_light_m2m_users_targets" type="collection">
+        <element label="Target" max_length="32" name="target" reference="x_snc_siam_light_target" type="reference"/>
+        <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+        <index name="index2">
+            <element name="target"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Outbound Trigger" max_length="40" name="x_snc_siam_light_outbound_trigger" type="collection">
+        <element dependent="table" dependent_on_field="table" label="Condition" max_length="254" name="condition" type="conditions" use_dependent_field="true"/>
+        <element label="Message Type" max_length="32" name="message_type" reference="x_snc_siam_light_message_type" type="reference"/>
+        <element label="Table" max_length="40" name="table" read_only="true" type="table_name"/>
+        <element label="Service Provider" max_length="32" name="target" reference="x_snc_siam_light_target" type="reference"/>
+        <index name="index">
+            <element name="message_type"/>
+        </index>
+        <index name="index2">
+            <element name="target"/>
+        </index>
+    </element>
+</database>

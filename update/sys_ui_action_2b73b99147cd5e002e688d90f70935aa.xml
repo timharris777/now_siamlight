@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name/>
+        <active>true</active>
+        <client>false</client>
+        <comments/>
+        <condition>current.outbound_type == 'soap'</condition>
+        <form_action>true</form_action>
+        <form_button>false</form_button>
+        <form_context_menu>false</form_context_menu>
+        <form_link>true</form_link>
+        <hint/>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <name>Automap Variable to Fields</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[var au = new global.ArrayUtil();
+var existingVars = [];
+var soap_function_name = current.soap_message_function.function_name;
+var sm = new sn_ws.SOAPMessageV2(current.soap_message.sys_scope + '.' + current.soap_message.name, soap_function_name);
+//var sm = new sn_ws.SOAPMessageV2(current.soap_message.name, soap_function_name);
+
+
+var variables = sm.getVariables();
+
+//check existing variables, remove old unneeded ones and populate the exising vars array
+var smp = new GlideRecord('x_snc_siam_light_field_map');
+smp.addQuery('message_type', current.sys_id);
+smp.query();
+while (smp.next()) {
+	var variableName = smp.getValue('external_fieldname');
+	if (au.contains(variables, variableName)) {
+		existingVars.push(variableName);
+	} else {
+		smp.deleteRecord();//old var that not needed based on new getVariables call
+	}
+}
+
+for (i = 0; i < variables.length; i++) {
+	if (!au.contains(existingVars, variables[i])){
+		// check if table has field with this name!!
+		var fieldname = variables[i].replace(soap_function_name + '.', '');
+		var gr_target = new GlideRecord(current.table)
+		if (gr_target.isValidField(fieldname)) {
+			smp.initialize();
+			
+			// remove soap function name from variable
+			smp.field = fieldname;
+			smp.external_fieldname = fieldname;
+			smp.message_type = current.sys_id;
+			smp.insert();
+		}
+	}
+}
+
+action.setRedirectURL(current);]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-01-18 12:25:53</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2b73b99147cd5e002e688d90f70935aa</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>Automap Variable to Fields</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_ui_action_2b73b99147cd5e002e688d90f70935aa</sys_update_name>
+        <sys_updated_by>daniel.draes</sys_updated_by>
+        <sys_updated_on>2016-04-23 19:44:26</sys_updated_on>
+        <table>x_snc_siam_light_message_type</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

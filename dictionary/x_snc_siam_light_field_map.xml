@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Field map" max_length="40" name="x_snc_siam_light_field_map" type="collection">
+        <element label="Coalesce on input" max_length="40" name="coalesce" type="boolean"/>
+        <element display="true" label="External fieldname" max_length="40" name="external_fieldname" type="string"/>
+        <element dependent="table" dependent_on_field="table" label="Field" max_length="80" name="field" type="field_name" use_dependent_field="true"/>
+        <element label="Message type" max_length="32" name="message_type" read_only="true" reference="x_snc_siam_light_message_type" type="reference"/>
+        <element choice="3" default="display" label="Output value" max_length="40" name="output_value" type="string">
+            <choice>
+                <element label="Display Value" sequence="0" value="display"/>
+                <element label="Database Value" sequence="1" value="database"/>
+            </choice>
+        </element>
+        <element label="Table" max_length="80" name="table" read_only="true" type="table_name"/>
+        <element label="Unique Identifier" max_length="40" name="unqiue_id" type="boolean"/>
+        <index name="index">
+            <element name="message_type"/>
+        </index>
+        <index name="index2">
+            <element name="external_fieldname"/>
+        </index>
+    </element>
+</database>
