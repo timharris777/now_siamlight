@@ -8,7 +8,7 @@
         <sys_class_name>sys_ui_message</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-29 22:01:42</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>c73b048737755200b2e8021a54990e8b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Remeber to remove role {0} from {1}</sys_name>

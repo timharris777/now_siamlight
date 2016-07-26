@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-22 09:57:05</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>e1d600c1295f42002e68eb689ad1b238</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_siam_light.user</sys_name>

@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-03 21:35:15</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>b5b9908529a346002e68eb689ad1b2e4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Coalesce on input</sys_name>

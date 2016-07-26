@@ -74,7 +74,7 @@
         <sys_class_name>sys_scope_script_access</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-22 21:25:42</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>7874224929df42002e68eb689ad1b2aa</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>GlideRecordUtil</sys_name>

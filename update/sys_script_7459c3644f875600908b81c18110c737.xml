@@ -38,7 +38,7 @@
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-04-24 20:45:56</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7459c3644f875600908b81c18110c737</sys_id>

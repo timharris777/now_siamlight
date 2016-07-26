@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-22 11:23:27</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>e82f0885295f42002e68eb689ad1b21f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Field map</sys_name>

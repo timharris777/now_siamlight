@@ -95,7 +95,7 @@ SIAMAccess.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-29 20:48:00</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>07e83f3237755200b2e8021a54990e38</sys_id>
         <sys_mod_count>14</sys_mod_count>
         <sys_name>SIAMAccess</sys_name>

@@ -10,14 +10,14 @@
         <sys_created_by>system</sys_created_by>
         <sys_created_on>2016-05-16 17:21:12</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>219d6f2f4f131200908b81c18110c73f</sys_id>
+        <sys_id>d26f37addb902600b315f27eaf961999</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_siam_light_log</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
-        <sys_update_name>ua_table_licensing_config_219d6f2f4f131200908b81c18110c73f</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_d26f37addb902600b315f27eaf961999</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
         <sys_updated_on>2016-05-16 17:21:12</sys_updated_on>
     </ua_table_licensing_config>

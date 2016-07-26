@@ -49,7 +49,7 @@
         <sys_class_name>sys_scope_script_access</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-01-18 12:27:30</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>c325f5d147cd5e002e688d90f7093577</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>ArrayUtil</sys_name>

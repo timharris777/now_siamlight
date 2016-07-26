@@ -18,7 +18,7 @@
         <sys_class_name>sys_gauge</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-11-10 12:35:09</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>1a31268b392302002e68598e680f8005</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Todays SIAM entries by state</sys_name>

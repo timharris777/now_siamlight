@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-01-18 11:53:11</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>f14da51147cd5e002e688d90f7093559</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>soap_message</sys_name>

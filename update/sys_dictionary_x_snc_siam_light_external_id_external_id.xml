@@ -51,8 +51,8 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-04-23 20:51:36</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
-        <sys_id>d6014218db435600b315f27eaf961988</sys_id>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a26f37addb902600b315f27eaf96199c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>External ID</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -60,8 +60,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_siam_light_external_id_external_id</sys_update_name>
-        <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-04-23 20:51:36</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2016-06-29 06:34:08</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

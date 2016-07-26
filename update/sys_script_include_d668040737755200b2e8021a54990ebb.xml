@@ -27,7 +27,7 @@ SIAMUtil.notNil = function(item) {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-29 21:49:30</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d668040737755200b2e8021a54990ebb</sys_id>
         <sys_mod_count>5</sys_mod_count>
         <sys_name>SIAMUtil</sys_name>

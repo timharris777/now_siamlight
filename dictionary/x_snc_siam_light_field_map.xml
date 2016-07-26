@@ -14,10 +14,10 @@
         <element label="Table" max_length="80" name="table" read_only="true" type="table_name"/>
         <element label="Unique Identifier" max_length="40" name="unqiue_id" type="boolean"/>
         <index name="index">
-            <element name="message_type"/>
+            <element name="external_fieldname"/>
         </index>
         <index name="index2">
-            <element name="external_fieldname"/>
+            <element name="message_type"/>
         </index>
     </element>
 </database>

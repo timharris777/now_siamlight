@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-04-23 19:55:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>1454f1d0db435600b315f27eaf96193a</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>update_rest_http_method</sys_name>

@@ -94,13 +94,16 @@ SIAMOutboundProcessor.prototype = {
 				
 			} else {
 				queue_entry.state = 'error';
+				this.logger.logError('WebService returned error code: ' + status);
 			}
 			queue_entry.update();
 		}
 		
 		catch(ex) {
 			//		var message = ex.getMessage();
-			this.logger.logError('Abbruch mit exception: ' + ex);
+			this.logger.logError('Abort with exception: ' + ex);
+			queue_entry.state = 'error';
+			queue_entry.update();
 		}
 	},
 	
@@ -159,8 +162,13 @@ SIAMOutboundProcessor.prototype = {
 			} else {
 				msg_function = mt.soap_message_function.function_name;
 			}
-			msg = new sn_ws.SOAPMessageV2(soap_message.sys_scope + '.' + soap_message.name, msg_function);
-			
+			try {
+				msg = new sn_ws.SOAPMessageV2(soap_message.sys_scope.scope + '.' + soap_message.name, msg_function);
+			}
+			catch (ex) {
+				this.logger.logError('Error creating SOAP message object, check access level. Root cause: ' + ex);
+				return;
+			}
 			
 			
 			// set fields / variable substitution
@@ -184,19 +192,26 @@ SIAMOutboundProcessor.prototype = {
 			
 			if (this.update) {
 				msg_function = mt.update_rest_http_method.function_name;
-				msg = new sn_ws.RESTMessageV2(rest_message.sys_scope + '.' + rest_message.name, msg_function);
+				msg = new sn_ws.RESTMessageV2(rest_message.sys_scope.scope + '.' + rest_message.name, msg_function);
 				
 				var endpoint = msg.getEndpoint() + '/' + ext_id;
 				this.logger.logDebug('Endpoint updated to: ' +msg.getEndpoint() + '/' + ext_id );
 				msg.setEndpoint(endpoint);
 			} else {
 				msg_function = mt.rest_http_method.function_name;
-				msg = new sn_ws.RESTMessageV2(rest_message.sys_scope + '.' + rest_message.name, msg_function);
+				try {
+					msg = new sn_ws.RESTMessageV2(rest_message.sys_scope.getDisplayValue() + '.' + rest_message.name, msg_function);
+				}
+				catch (ex) {
+					this.logger.logError('Error creating SOAP message object, check access level. Root cause: ' + ex);
+					return;
+				}
+				
 				
 			}
 			msg.setRequestHeader("Accept","application/json");
 			msg.setRequestHeader('Content-Type','application/json');
-			msg.setRequestBody(queue_entry.payload);	
+			msg.setRequestBody(queue_entry.payload);
 		}
 		
 		return msg;
@@ -219,7 +234,7 @@ SIAMOutboundProcessor.prototype = {
         <sys_created_on>2015-10-23 07:05:35</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
-        <sys_mod_count>52</sys_mod_count>
+        <sys_mod_count>64</sys_mod_count>
         <sys_name>SIAMOutboundProcessor</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -227,6 +242,6 @@ SIAMOutboundProcessor.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_98192495295382002e68eb689ad1b24f</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-05-25 14:21:46</sys_updated_on>
+        <sys_updated_on>2016-07-19 12:45:48</sys_updated_on>
     </sys_script_include>
 </record_update>

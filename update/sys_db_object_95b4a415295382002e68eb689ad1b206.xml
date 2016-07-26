@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-23 06:48:06</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>95b4a415295382002e68eb689ad1b206</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Outbound Trigger</sys_name>

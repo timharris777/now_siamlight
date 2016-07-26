@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-04-23 20:51:36</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>0ff04218db435600b315f27eaf9619a8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>External ID</sys_name>

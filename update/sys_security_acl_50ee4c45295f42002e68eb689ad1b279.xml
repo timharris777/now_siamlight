@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-22 10:32:14</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>50ee4c45295f42002e68eb689ad1b279</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_siam_light_target</sys_name>
