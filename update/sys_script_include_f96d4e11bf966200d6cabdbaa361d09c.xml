@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_siam_light.SIAMRefQualifiers</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>SIAMRefQualifiers</name>
+        <script><![CDATA[var SIAMRefQualifiers = Class.create();
+SIAMRefQualifiers.prototype = {
+    initialize: function() {
+    },
+
+	messageTypes: function() {
+		var result = [];
+		var gr_mtype = new GlideRecord('x_snc_siam_light_message_type');
+		gr_mtype.addQuery('sys_id', '!=', current.message_type);
+		gs.warn('Querying with: ' + gr_mtype.getEncodedQuery());
+		gr_mtype.query();
+		while (gr_mtype.next()){
+			result.push(gr_mtype.sys_id + '');
+		} 
+		return result;
+	},
+	
+    type: 'SIAMRefQualifiers'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>daniel.draes</sys_created_by>
+        <sys_created_on>2016-10-05 13:44:40</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f96d4e11bf966200d6cabdbaa361d09c</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>SIAMRefQualifiers</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_script_include_f96d4e11bf966200d6cabdbaa361d09c</sys_update_name>
+        <sys_updated_by>daniel.draes</sys_updated_by>
+        <sys_updated_on>2016-10-05 13:51:45</sys_updated_on>
+    </sys_script_include>
+</record_update>
