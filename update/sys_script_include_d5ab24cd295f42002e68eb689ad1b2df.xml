@@ -123,6 +123,7 @@ SIAMQueue.prototype = {
 					var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
 					siamq._setRecord(incl_record[i]);
 					siamq._setQueueRecord(this.queue);
+					siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
 					siamq.updateRecord();
 				}
 				
@@ -162,6 +163,11 @@ SIAMQueue.prototype = {
 			this._setRecordValue(gr_target, field_map.field, this.record[field_map.external_fieldname]);
 			this.logger.logDebug('Mapped ' + field_map.external_fieldname + ' to ' + field_map.field + ' with value <' + this.record[field_map.external_fieldname] +'>');
 		}
+		
+		// update reference field if available
+		if (this.reference_field && this.reference_value) {
+			this._setRecordValue(gr_target, this.reference_field, this.reference_value);			
+		}
 	},
 
     /* overwrite the decoded payload string with new object, required when nested structures are recieved */
@@ -175,6 +181,11 @@ SIAMQueue.prototype = {
 	},
 	
 
+	_setReferenceInfo: function (field, value) {
+		this.reference_field = field;
+		this.reference_value = value;
+	},
+	
 	type: 'SIAMQueue'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
@@ -182,7 +193,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>64</sys_mod_count>
+        <sys_mod_count>65</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -190,6 +201,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-10-07 09:10:09</sys_updated_on>
+        <sys_updated_on>2016-11-28 18:55:18</sys_updated_on>
     </sys_script_include>
 </record_update>

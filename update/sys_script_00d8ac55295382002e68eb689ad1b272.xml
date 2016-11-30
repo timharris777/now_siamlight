@@ -28,19 +28,20 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[function onAsync(current) {
+        <script><![CDATA[function onAfter(current, previous) {
    //This function will be automatically called when this rule is processed.
-   var siam_out = new SIAMOutboundProcessor();
-	siam_out.createQueueEntry(current);
+//    var siam_out = new SIAMOutboundProcessor();
+// 	siam_out.createQueueEntry(current);
+	gs.eventQueue('x_snc_siam_light.outbound.triggered',current);
 }]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-23 07:04:42</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>00d8ac55295382002e68eb689ad1b272</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Process Outbound Triggers</sys_name>
         <sys_overrides/>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -49,9 +50,9 @@
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_00d8ac55295382002e68eb689ad1b272</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-05-24 07:44:39</sys_updated_on>
+        <sys_updated_on>2016-11-28 17:57:34</sys_updated_on>
         <template/>
-        <when>async</when>
+        <when>after</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=00d8ac55295382002e68eb689ad1b272"/>
 </record_update>

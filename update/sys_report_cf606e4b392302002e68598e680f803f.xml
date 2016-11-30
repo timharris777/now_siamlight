@@ -62,7 +62,7 @@
         <page_hdrftr display_value="Default">0ecdb03fc3613000cef73b251eba8f5e</page_hdrftr>
         <report_drilldown/>
         <report_source/>
-        <roles/>
+        <roles>snc_internal</roles>
         <row>action</row>
         <sc_groupby_item_id/>
         <sc_groupby_variable_id/>
@@ -86,7 +86,7 @@
         <sys_created_on>2015-11-10 12:31:39</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>cf606e4b392302002e68598e680f803f</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Todays SIAM entries by direction</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy/>
@@ -94,7 +94,7 @@
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_report_cf606e4b392302002e68598e680f803f</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2016-05-16 16:41:20</sys_updated_on>
+        <sys_updated_on>2016-11-29 07:26:23</sys_updated_on>
         <table>x_snc_siam_light_queue</table>
         <title>Todays SIAM entries by direction</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>
