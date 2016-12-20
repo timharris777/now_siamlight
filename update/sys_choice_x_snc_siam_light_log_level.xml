@@ -84,8 +84,8 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-06-02 09:01:35</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>2374e7354f56a200908b81c18110c71f</sys_id>
-            <sys_mod_count>5</sys_mod_count>
+            <sys_id>02fb65f9db332600b315f27eaf9619db</sys_id>
+            <sys_mod_count>6</sys_mod_count>
             <sys_name>level</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
             <sys_policy/>
@@ -93,7 +93,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_choice_x_snc_siam_light_log_level</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-07-19 12:52:36</sys_updated_on>
+            <sys_updated_on>2016-10-07 09:16:41</sys_updated_on>
         </sys_choice_set>
     </sys_choice>
 </record_update>

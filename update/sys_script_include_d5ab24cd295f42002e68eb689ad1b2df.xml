@@ -50,13 +50,39 @@ SIAMQueue.prototype = {
 			this.record = {};
 			while (this.field_map.next()) {
 				var output_type = this.field_map.output_value;
-				if ( output_type == 'database') {
+				this.logger.logDebug(typeof this.field_map.field_run_script);
+				this.logger.logDebug(this.field_map.field_run_script.toString());
+				if (this.field_map.field_run_script == true) {
+					var evaluator = new GlideScopedEvaluator();
+					evaluator.putVariable('source', this.field_map); // add current field_map to the script
+					evaluator.putVariable('current', source_record); // add current gr to the script
+					evaluator.putVariable('result', null); //add result to the set
+					evaluator.evaluateScript(this.field_map, 'field_transform_script', null); // put the GlideRecord into the evaluation and evaluate the field_transform_script script
+					this.record[this.field_map.external_fieldname] = evaluator.getVariable('result');
+				} else if ( output_type == 'database') {
 					this.record[this.field_map.external_fieldname] = source_record.getValue(this.field_map.field);
 				} else if (output_type == 'display') {
 					this.record[this.field_map.external_fieldname] = source_record.getDisplayValue(this.field_map.field);
+					//added by RS
 				}
 				this.logger.logDebug('Mapped ' + this.field_map.field + ' to ' + this.field_map.external_fieldname + ' with value <' + this.record[this.field_map.external_fieldname] +'>');
 			}
+			
+			// now process additional structers if any
+			var gr_structure = new GlideRecord(this.STRCMAP);
+			gr_structure.addQuery('message_type', this.msgType.sys_id);
+			gr_structure.query();
+			
+			while(gr_structure.next()) {
+				var gr_child = new GlideRecord(gr_structure.included_message_type.table);
+				gr_child.addQuery(gr_structure.reference_value_field, source_record.sys_id);
+				gr_child.query();
+				
+				while (gr_child.next()) {
+					// TODO: use extracted method to map record to JSON string
+				}
+			}
+			
 		}
 	},
 	
@@ -160,13 +186,22 @@ SIAMQueue.prototype = {
 	
 	_mapFieldsToGr: function(field_map, gr_target) {
 		while (field_map.next()) {
+			//added by RS
+			if (this.field_map.external_fieldname_run_script == true) {
+				var evaluator = new GlideScopedEvaluator();
+				evaluator.putVariable('source', field_map); // add current field_map to the script
+				evaluator.putVariable('current', this.record); // add current payload to the script
+				evaluator.putVariable('result', null); //add result to the set
+				evaluator.evaluateScript(this.field_map, 'external_fieldname_transform_script', null); // put the GlideRecord into the evaluation and evaluate the field_transform_script script
+				this.record[field_map.external_fieldname] = evaluator.getVariable('result');
+			}
 			this._setRecordValue(gr_target, field_map.field, this.record[field_map.external_fieldname]);
 			this.logger.logDebug('Mapped ' + field_map.external_fieldname + ' to ' + field_map.field + ' with value <' + this.record[field_map.external_fieldname] +'>');
 		}
 		
 		// update reference field if available
 		if (this.reference_field && this.reference_value) {
-			this._setRecordValue(gr_target, this.reference_field, this.reference_value);			
+			this._setRecordValue(gr_target, this.reference_field, this.reference_value);
 		}
 	},
 
@@ -177,10 +212,10 @@ SIAMQueue.prototype = {
 	
 	_setQueueRecord: function (qu_rec) {
 		this.queue = qu_rec;
-		this.logger.setQueueReference(qu_rec.sys_id);	
+		this.logger.setQueueReference(qu_rec.sys_id);
 	},
 	
-
+	
 	_setReferenceInfo: function (field, value) {
 		this.reference_field = field;
 		this.reference_value = value;
@@ -193,7 +228,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>65</sys_mod_count>
+        <sys_mod_count>72</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -201,6 +236,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-11-28 18:55:18</sys_updated_on>
+        <sys_updated_on>2016-12-20 14:14:15</sys_updated_on>
     </sys_script_include>
 </record_update>

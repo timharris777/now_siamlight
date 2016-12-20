@@ -10,11 +10,11 @@
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-11-29 07:58:55</sys_created_on>
-            <sys_id>211e8c4f4fdba600908b81c18110c72d</sys_id>
+            <sys_created_on>2016-10-05 17:46:21</sys_created_on>
+            <sys_id>1a1503d5bfd66200d6cabdbaa361d0de</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-11-29 07:58:55</sys_updated_on>
+            <sys_updated_on>2016-10-05 17:46:21</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -25,11 +25,11 @@
             <position>1</position>
             <sum>false</sum>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-11-29 07:58:55</sys_created_on>
-            <sys_id>a11e8c4f4fdba600908b81c18110c72d</sys_id>
+            <sys_created_on>2016-10-05 17:46:21</sys_created_on>
+            <sys_id>9a1503d5bfd66200d6cabdbaa361d0de</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-11-29 07:58:55</sys_updated_on>
+            <sys_updated_on>2016-10-05 17:46:21</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -40,26 +40,11 @@
             <position>2</position>
             <sum>false</sum>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-11-29 07:58:55</sys_created_on>
-            <sys_id>251e8c4f4fdba600908b81c18110c72d</sys_id>
+            <sys_created_on>2016-10-05 17:46:21</sys_created_on>
+            <sys_id>1e1503d5bfd66200d6cabdbaa361d0de</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-11-29 07:58:55</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>reference_value_field</element>
-            <list_id display_value="x_snc_siam_light_structure_map" element="NULL" name="x_snc_siam_light_structure_map" parent="x_snc_siam_light_message_type" relationship="NULL" sys_domain="global" view="Default view">d91e8c4f4fdba600908b81c18110c72c</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>3</position>
-            <sum>false</sum>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-11-29 07:58:55</sys_created_on>
-            <sys_id>a51e8c4f4fdba600908b81c18110c72d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-11-29 07:58:55</sys_updated_on>
+            <sys_updated_on>2016-10-05 17:46:21</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -73,7 +58,7 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-11-29 07:58:55</sys_created_on>
+            <sys_created_on>2016-10-05 17:46:21</sys_created_on>
             <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
@@ -86,7 +71,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_list_x_snc_siam_light_structure_map_x_snc_siam_light_message_type_null</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-11-29 07:58:55</sys_updated_on>
+            <sys_updated_on>2016-10-05 17:46:21</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

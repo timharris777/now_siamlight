@@ -48,12 +48,16 @@ SIAMOutboundProcessor.prototype = {
 		gr_trigger.addQuery('table', table);
 		gr_trigger.addQuery('target.active', 'true');
 		gr_trigger.query();
+		gs.addInfoMessage('Checking ' + gr_trigger.getRowCount() + ' number of trigger conditions on table ' + table);
 		while ( gr_trigger.next()) {
 			var matches = GlideFilter.checkRecord(record, gr_trigger.condition);
 			if (matches) {
+				gs.addInfoMessage('Record matching condition: ' + gr_trigger.condition);
 				var qu = new SIAMQueue(gr_trigger.message_type, gr_trigger.target);
 				qu.setSource(record);
 				qu.createOutput();
+			} else {
+				gs.addInfoMessage('Record **NOT** matching condition: ' + gr_trigger.condition);
 			}
 		}
 		
@@ -234,7 +238,7 @@ SIAMOutboundProcessor.prototype = {
         <sys_created_on>2015-10-23 07:05:35</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
-        <sys_mod_count>64</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>SIAMOutboundProcessor</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -242,6 +246,6 @@ SIAMOutboundProcessor.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_98192495295382002e68eb689ad1b24f</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-07-19 12:45:48</sys_updated_on>
+        <sys_updated_on>2016-12-19 13:05:58</sys_updated_on>
     </sys_script_include>
 </record_update>

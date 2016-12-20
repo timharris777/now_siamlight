@@ -33,7 +33,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>0a772095295382002e68eb689ad1b2c3</sys_id>
-            <sys_mod_count>4</sys_mod_count>
+            <sys_mod_count>5</sys_mod_count>
             <sys_name>x_snc_siam_light_target</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
             <sys_policy/>
@@ -41,7 +41,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_list_x_snc_siam_light_target_sys_ref_list</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-07 09:16:34</sys_updated_on>
+            <sys_updated_on>2016-12-20 14:05:40</sys_updated_on>
             <sys_user/>
             <view display_value="Reference List" name="sys_ref_list">e53d2732db311200b315f27eaf96195c</view>
             <view_name/>

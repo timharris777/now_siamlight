@@ -4,196 +4,98 @@
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>message_type</element>
             <position>0</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>343983644f875600908b81c18110c786</sys_id>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>71e17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.split</element>
+            <element>table</element>
             <position>1</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>743983644f875600908b81c18110c786</sys_id>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>f1e17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
-            <type>.split</type>
+            <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.end_split</element>
+            <element>unqiue_id</element>
             <position>2</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>b43983644f875600908b81c18110c786</sys_id>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>75e17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
-            <type>.end_split</type>
+            <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.begin_split</element>
             <position>3</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>f43983644f875600908b81c18110c786</sys_id>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>f5e17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>table</element>
+            <element>field</element>
             <position>4</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>383983644f875600908b81c18110c786</sys_id>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>79e17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
             <position>5</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>783983644f875600908b81c18110c786</sys_id>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>f9e17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
             <type>.split</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.end_split</element>
-            <position>6</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>b83983644f875600908b81c18110c786</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type>.end_split</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.begin_split</element>
-            <position>7</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>f83983644f875600908b81c18110c786</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>external_fieldname</element>
-            <position>8</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>3c3983644f875600908b81c18110c786</sys_id>
+            <position>6</position>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
+            <sys_id>7de17cd7bf23a600d6cabdbaa361d051</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>unqiue_id</element>
-            <position>9</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>7c3983644f875600908b81c18110c786</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.split</element>
-            <position>10</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>bc3983644f875600908b81c18110c786</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type>.split</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>field</element>
-            <position>11</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>fc3983644f875600908b81c18110c786</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>output_value</element>
-            <position>12</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>303983644f875600908b81c18110c787</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>coalesce</element>
-            <position>13</position>
-            <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-04-24 20:44:46</sys_created_on>
-            <sys_id>703983644f875600908b81c18110c787</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
-            <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-04-24 20:44:46</sys_updated_on>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -209,7 +111,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>26ded0d1295382002e68eb689ad1b23c</sys_id>
-            <sys_mod_count>4</sys_mod_count>
+            <sys_mod_count>19</sys_mod_count>
             <sys_name>Field Map</sys_name>
             <sys_overrides/>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -218,7 +120,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_section_26ded0d1295382002e68eb689ad1b23c</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-07 09:16:36</sys_updated_on>
+            <sys_updated_on>2016-12-20 14:05:42</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

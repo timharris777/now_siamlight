@@ -15,6 +15,8 @@
                 <element label="output" sequence="1" value="output"/>
             </choice>
         </element>
+        <element attributes="edge_encryption_enabled=true" label="External Action" max_length="40" name="external_action" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="External Reference" max_length="40" name="external_reference" read_only="true" type="string"/>
         <element label="Message Type" max_length="32" name="message_type" reference="x_snc_siam_light_message_type" type="reference"/>
         <element label="Payload" max_length="4000" name="payload" type="string"/>
         <element dependent="reference_table" dependent_on_field="reference_table" label="Reference Record" max_length="32" name="reference_record" type="document_id" use_dependent_field="true"/>
