@@ -50,8 +50,7 @@ SIAMQueue.prototype = {
 			this.record = {};
 			while (this.field_map.next()) {
 				var output_type = this.field_map.output_value;
-				this.logger.logDebug(typeof this.field_map.field_run_script);
-				this.logger.logDebug(this.field_map.field_run_script.toString());
+
 				if (this.field_map.field_run_script == true) {
 					var evaluator = new GlideScopedEvaluator();
 					evaluator.putVariable('source', this.field_map); // add current field_map to the script
@@ -68,6 +67,7 @@ SIAMQueue.prototype = {
 				this.logger.logDebug('Mapped ' + this.field_map.field + ' to ' + this.field_map.external_fieldname + ' with value <' + this.record[this.field_map.external_fieldname] +'>');
 			}
 			
+			//added by RS
 			// now process additional structers if any
 			var gr_structure = new GlideRecord(this.STRCMAP);
 			gr_structure.addQuery('message_type', this.msgType.sys_id);
@@ -77,9 +77,33 @@ SIAMQueue.prototype = {
 				var gr_child = new GlideRecord(gr_structure.included_message_type.table);
 				gr_child.addQuery(gr_structure.reference_value_field, source_record.sys_id);
 				gr_child.query();
-				
+				this.record[gr_structure.external_fieldname] = {};
 				while (gr_child.next()) {
 					// TODO: use extracted method to map record to JSON string
+					//get field map here
+					var _field_map = new GlideRecord(this.FLDMAP);
+					_field_map.addQuery('message_type', gr_structure.included_message_type);
+					_field_map.query();
+					while (_field_map.next()) {
+						var _output_type = _field_map.output_value;
+						if (_field_map.field_run_script == true) {
+							var _evaluator = new GlideScopedEvaluator();
+							_evaluator.putVariable('source', _field_map); // add current field_map to the script
+							_evaluator.putVariable('current', gr_child); // add current gr to the script
+							_evaluator.putVariable('result', null); //add result to the set
+							_evaluator.evaluateScript(_field_map, 'field_transform_script', null); // put the GlideRecord into the evaluation and evaluate the field_transform_script script
+							
+							this.record[gr_structure.external_fieldname][_field_map.external_fieldname] = _evaluator.getVariable('result');
+						} else if ( _output_type == 'database') {
+							this.record[gr_structure.external_fieldname][_field_map.external_fieldname] = gr_child.getValue(_field_map.field);
+						} else if (_output_type == 'display') {
+							this.record[gr_structure.external_fieldname][_field_map.external_fieldname] = gr_child.getDisplayValue(_field_map.field);
+							//added by RS
+						}
+						this.logger.logDebug('Mapped ' + _field_map.field + ' to ' + _field_map.external_fieldname + ' with value <' + this.record[gr_structure.external_fieldname][_field_map.external_fieldname] +'>');
+					}
+					//map fields to their respective fields in the record
+					
 				}
 			}
 			
@@ -108,15 +132,17 @@ SIAMQueue.prototype = {
 		}
 		// if nothing is assigned till now, create new record
 		if (gs.nil(gr_target))  {
-			gr_target =  new GlideRecord(this.msgType.table);
 			if (this.queue.action != 'insert' && this.queue.action != 'insert_or_update') {
 				this.logger.logError('Record does not exist, need insert action');
 				return false;
 			}
 			this.logger.logInfo('No existing target found, creating new record in table ' + this.msgType.table);
+			gr_target =  new GlideRecord(this.msgType.table);
+			gr_target.initialize();
 		}
 		
 		this._mapFieldsToGr(this.field_map, gr_target);
+		// this.logger.logInfo('DD TEST NUMBER: ' + gr_target.number);
 		var rc = gr_target.update();
 		if (rc == null) {
 			this.logger.logError('Error during save');
@@ -149,15 +175,25 @@ SIAMQueue.prototype = {
 					var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
 					siamq._setRecord(incl_record[i]);
 					siamq._setQueueRecord(this.queue);
-					siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
-					siamq.updateRecord();
+					if (gr_structure.child_sysid) {
+						this.logger.logInfo('Updating child table field ' + gr_structure.reference_value_field + ' with reference to ' + gr_target.sys_id);
+
+						siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
+					}
+					var child_sys_id = siamq.updateRecord();
+					
+					if (gr_structure.parent_sysid) {
+						this.logger.logInfo('Updating parent table field ' + gr_structure.child_value_field + ' with reference to ' + child_sys_id);
+						gr_target.setValue(gr_structure.child_value_field, child_sys_id);
+						gr_target.update();
+					}
 				}
 				
 			}
 		}
 		
 		
-		return true;
+		return gr_target.sys_id;
 		
 	},
 	
@@ -179,7 +215,7 @@ SIAMQueue.prototype = {
 	
 	_setRecordValue: function(gr, field, value) {
 		if (!gs.nil(value)) {
-			gs.info('Setting ' + field + ' to ' + field);
+			this.logger.logDebug('Inbound Mapping: Set ' + field + ' to ' + value );
 			gr.setValue(field, value);
 		}
 	},
@@ -193,10 +229,11 @@ SIAMQueue.prototype = {
 				evaluator.putVariable('current', this.record); // add current payload to the script
 				evaluator.putVariable('result', null); //add result to the set
 				evaluator.evaluateScript(this.field_map, 'external_fieldname_transform_script', null); // put the GlideRecord into the evaluation and evaluate the field_transform_script script
-				this.record[field_map.external_fieldname] = evaluator.getVariable('result');
+				this._setRecordValue(gr_target, field_map.field, evaluator.getVariable('result'));
+//				this.record[field_map.external_fieldname] = evaluator.getVariable('result');
+			} else  {
+				this._setRecordValue(gr_target, field_map.field, this.record[field_map.external_fieldname]);
 			}
-			this._setRecordValue(gr_target, field_map.field, this.record[field_map.external_fieldname]);
-			this.logger.logDebug('Mapped ' + field_map.external_fieldname + ' to ' + field_map.field + ' with value <' + this.record[field_map.external_fieldname] +'>');
 		}
 		
 		// update reference field if available
@@ -228,7 +265,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>72</sys_mod_count>
+        <sys_mod_count>96</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -236,6 +273,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-12-20 14:14:15</sys_updated_on>
+        <sys_updated_on>2017-01-16 19:40:50</sys_updated_on>
     </sys_script_include>
 </record_update>

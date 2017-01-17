@@ -2,30 +2,44 @@
 <record_update>
     <sys_ui_section caption="Field" section_id="d44e9817bf23a600d6cabdbaa361d034" sys_domain="global" table="x_snc_siam_light_field_map" version="3" view="">
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>field_run_script</element>
+            <element>field</element>
             <position>0</position>
-            <sys_created_by>Richard.Szolar.admin</sys_created_by>
-            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
-            <sys_id>f1e17cd7bf23a600d6cabdbaa361d053</sys_id>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 19:25:01</sys_created_on>
+            <sys_id>4477bd266d143200d6cabda1168c4ec5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field" display_value="Field" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">d44e9817bf23a600d6cabdbaa361d034</sys_ui_section>
-            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
-            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 19:25:01</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>field_run_script</element>
+            <position>1</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 19:25:01</sys_created_on>
+            <sys_id>c477bd266d143200d6cabda1168c4ec5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Field" display_value="Field" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">d44e9817bf23a600d6cabdbaa361d034</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 19:25:01</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>field_transform_script</element>
-            <position>1</position>
-            <sys_created_by>Richard.Szolar.admin</sys_created_by>
-            <sys_created_on>2016-12-12 15:29:35</sys_created_on>
-            <sys_id>75e17cd7bf23a600d6cabdbaa361d053</sys_id>
+            <position>2</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 19:25:01</sys_created_on>
+            <sys_id>4877bd266d143200d6cabda1168c4ec5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field" display_value="Field" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">d44e9817bf23a600d6cabdbaa361d034</sys_ui_section>
-            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
-            <sys_updated_on>2016-12-12 15:29:35</sys_updated_on>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 19:25:01</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

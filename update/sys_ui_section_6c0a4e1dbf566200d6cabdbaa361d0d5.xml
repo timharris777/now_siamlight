@@ -5,13 +5,13 @@
             <element>message_type</element>
             <position>0</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>b35ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>0ab567da6d103200d6cabda1168c4ecf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,13 +19,13 @@
             <element>.split</element>
             <position>1</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>375ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>8ab567da6d103200d6cabda1168c4ecf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -33,13 +33,13 @@
             <element>.end_split</element>
             <position>2</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>b75ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>0eb567da6d103200d6cabda1168c4ecf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
@@ -47,13 +47,13 @@
             <element>.begin_split</element>
             <position>3</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>3b5ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>8eb567da6d103200d6cabda1168c4ecf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
@@ -61,13 +61,13 @@
             <element>external_fieldname</element>
             <position>4</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>bb5ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>02b567da6d103200d6cabda1168c4ed0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -75,41 +75,125 @@
             <element>cardinality</element>
             <position>5</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>3f5ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>82b567da6d103200d6cabda1168c4ed0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>child_sysid</element>
+            <position>6</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>06b567da6d103200d6cabda1168c4ed0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>table</element>
+            <position>7</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>86b567da6d103200d6cabda1168c4ed0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>reference_value_field</element>
+            <position>8</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>0ab567da6d103200d6cabda1168c4ed0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>parent_sysid</element>
+            <position>9</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>8ab567da6d103200d6cabda1168c4ed0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>parent_table</element>
+            <position>10</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>0eb567da6d103200d6cabda1168c4ed0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>child_value_field</element>
+            <position>11</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>8eb567da6d103200d6cabda1168c4ed0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>6</position>
+            <position>12</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>bf5ac69dbf566200d6cabdbaa361d0d0</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>02b567da6d103200d6cabda1168c4ed1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>included_message_type</element>
-            <position>7</position>
+            <position>13</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2016-10-05 13:29:47</sys_created_on>
-            <sys_id>335ac69dbf566200d6cabdbaa361d0d1</sys_id>
+            <sys_created_on>2017-01-16 08:48:23</sys_created_on>
+            <sys_id>82b567da6d103200d6cabda1168c4ed1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_structure_map" sys_domain="global" view="Default view">6c0a4e1dbf566200d6cabdbaa361d0d5</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2016-10-05 13:29:47</sys_updated_on>
+            <sys_updated_on>2017-01-16 08:48:23</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

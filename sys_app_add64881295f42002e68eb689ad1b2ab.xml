@@ -22,14 +22,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-22 09:57:05</sys_created_on>
         <sys_id>add64881295f42002e68eb689ad1b2ab</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-12-20 14:05:40</sys_updated_on>
+        <sys_updated_on>2017-01-16 20:04:29</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <user_role display_value="x_snc_siam_light.user" name="x_snc_siam_light.user">e1d600c1295f42002e68eb689ad1b238</user_role>
         <vendor/>
         <vendor_prefix/>
-        <version>1.2.1</version>
+        <version>1.3.1</version>
     </sys_app>
 </record_update>

@@ -7,11 +7,15 @@
                 <element label="One" sequence="1" value="1"/>
             </choice>
         </element>
+        <element label="Store parent sys_id in child record" max_length="40" name="child_sysid" type="boolean"/>
+        <element dependent="parent_table" dependent_on_field="parent_table" label="Child value field name" max_length="80" name="child_value_field" type="field_name" use_dependent_field="true"/>
         <element label="External fieldname" max_length="40" name="external_fieldname" type="string"/>
         <element label="Included Message Type" max_length="32" name="included_message_type" reference="x_snc_siam_light_message_type" reference_cascade_rule="clear" reference_qual="javascript:new SIAMRefQualifiers().messageTypes()" type="reference" use_reference_qualifier="advanced"/>
         <element label="Message type" max_length="32" name="message_type" reference="x_snc_siam_light_message_type" type="reference"/>
-        <element dependent="table" dependent_on_field="table" label="Referenced value field name" max_length="80" name="reference_value_field" type="field_name" use_dependent_field="true"/>
-        <element label="Table" max_length="80" name="table" read_only="true" type="table_name"/>
+        <element label="Store child sys_id in parent" max_length="40" name="parent_sysid" type="boolean"/>
+        <element attributes="base_start=true" label="Parent Table" max_length="80" name="parent_table" read_only="true" type="table_name"/>
+        <element dependent="table" dependent_on_field="table" label="Parent value field name" max_length="80" name="reference_value_field" type="field_name" use_dependent_field="true"/>
+        <element label="Child Table" max_length="80" name="table" read_only="true" type="table_name"/>
         <index name="index">
             <element name="message_type"/>
         </index>
