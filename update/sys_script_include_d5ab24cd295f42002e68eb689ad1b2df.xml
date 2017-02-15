@@ -42,8 +42,17 @@ SIAMQueue.prototype = {
 		
 		if (source_record.getRecordClassName() == this.QUEUE) {
 			this.queue = source_record;
-			this.record = new global.JSON().decode(source_record.payload);
-    		this.logger.setQueueReference(source_record.sys_id);
+			this.logger.setQueueReference(source_record.sys_id);
+			
+			if (/^[\],:{}\s]*$/.test(source_record.payload.replace(/\\["\\\/bfnrtu]/g, '@').
+				replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+			replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+				this.record = new global.JSON().decode(source_record.payload);
+				
+			} else {
+				this.logger.logError('Received JSON Payload not valid.');
+			}
+			
 		} else {
 			this.reference_table = source_record.getRecordClassName();
 			this.reference_sys_id = source_record.sys_id;
@@ -62,7 +71,11 @@ SIAMQueue.prototype = {
 					
 					this.record[this.field_map.external_fieldname] = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result');
 					
-				} else if ( output_type == 'database') {
+				} else if (this._isDateField(source_record, this.field_map.field)) {
+					var gd = new GlideDate();
+					gd.setValue(source_record.getValue(this.field_map.field));
+					this.record[this.field_map.external_fieldname] = gd.getByFormat(this.field_map.date_format + "");
+				} else if (output_type == 'database') {
 					this.record[this.field_map.external_fieldname] = source_record.getValue(this.field_map.field);
 				} else if (output_type == 'display') {
 					this.record[this.field_map.external_fieldname] = source_record.getDisplayValue(this.field_map.field);
@@ -154,7 +167,6 @@ SIAMQueue.prototype = {
 			}
 			
 			this._mapFieldsToGr(this.field_map, gr_target);
-			// this.logger.logInfo('DD TEST NUMBER: ' + gr_target.number);
 			var rc = gr_target.update();
 			if (rc == null) {
 				this.logger.logError('Error during save');
@@ -176,7 +188,7 @@ SIAMQueue.prototype = {
 		gr_structure.addQuery('message_type', this.msgType.sys_id);
 		gr_structure.query();
 		
-		while(gr_structure.next()) {
+		while(gr_structure.next() && this.record) {
 			// pushing to an array as it might be one anyway. This way processing is always the same
 			var incl_record = new global.ArrayUtil().ensureArray(this.record[gr_structure.external_fieldname]);
 			var len = 1;
@@ -185,12 +197,13 @@ SIAMQueue.prototype = {
 			}
 			
 			for (var i=0; i<len; i++) {
-				var process = false;
-				if (this.record[gr_structure.external_fieldname]) {
+				var process = true;
+				var struc_record = incl_record[i];
+				if (struc_record) {
 					// now check input condition script if any
 					if (!gs.nil(gr_structure.input_condition_script)) {
 						var vars = {
-							'current': this.record[gr_structure.external_fieldname]
+							'current': struc_record
 						};
 						
 						if (this._evaluateScript(gr_structure, 'input_condition_script', vars) === true)  {
@@ -198,29 +211,31 @@ SIAMQueue.prototype = {
 						} else {
 							process = false;
 						}
-						
-						if (process) {
-							var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
-							siamq._setRecord(incl_record[i]);
-							siamq._setQueueRecord(this.queue);
-							if (gr_structure.child_sysid) {
-								this.logger.logInfo('Updating child table field ' + gr_structure.reference_value_field + ' with reference to ' + gr_target.sys_id);
-								
-								siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
-							}
-							var child_sys_id = siamq.updateRecord();
-							
-							if (gr_structure.parent_sysid) {
-								this.logger.logInfo('Updating parent table field ' + gr_structure.child_value_field + ' with reference to ' + child_sys_id);
-								gr_target.setValue(gr_structure.child_value_field, child_sys_id);
-								gr_target.update();
-							}
-						}
-						
 					}
+					
+					if (process) {
+						var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
+						siamq._setRecord(incl_record[i]);
+						siamq._setQueueRecord(this.queue);
+						if (gr_structure.child_sysid) {
+							this.logger.logInfo('Updating child table field ' + gr_structure.reference_value_field + ' with reference to ' + gr_target.sys_id);
+							
+							siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
+						}
+						var child_sys_id = siamq.updateRecord();
+						
+						if (gr_structure.parent_sysid) {
+							this.logger.logInfo('Updating parent table field ' + gr_structure.child_value_field + ' with reference to ' + child_sys_id);
+							gr_target.setValue(gr_structure.child_value_field, child_sys_id);
+							gr_target.update();
+						}
+					}
+					
+					
 				}
 			}
 		}
+		
 		return created_sysid;
 		
 	},
@@ -264,6 +279,14 @@ SIAMQueue.prototype = {
 		while (field_map.next()) {
 			if (this.field_map.external_fieldname_run_script == true) {
 				this._setRecordValue(gr_target, field_map.field, this._executeInboundScript(field_map));
+			} else if (this._isDateField(gr_target, field_map.field )) {
+				var du = new DateUtil();
+				var dt_ms = du.getDateFromFormat(this.record[field_map.external_fieldname], field_map.date_format);
+				
+				var gDate = new GlideDateTime();
+				gDate.setValue(parseInt(dt_ms, 10));
+				this._setRecordValue(gr_target, field_map.field, gDate);
+				
 			} else  {
 				this._setRecordValue(gr_target, field_map.field, this.record[field_map.external_fieldname]);
 			}
@@ -294,20 +317,19 @@ SIAMQueue.prototype = {
 	_evaluateScript: function (gr_structure, field, vars, return_variable) {
 		var return_value = '';
 		try {
-			this.logger.logInfo('Running script field ' + field + ' with variables ' + JSON.stringify(vars));
+			this.logger.logInfo('Running script field ' + field);
 			var _evaluator = new GlideScopedEvaluator();
 			
 			// set variables
 			for (var key in vars) {
 				if (vars.hasOwnProperty(key)) {
-					this.logger.logDebug('Setting variable ' + key + ' to ' + vars[key]);
 					_evaluator.putVariable(key, vars[key]);
 				}
 			}
 			
 			return_value =  _evaluator.evaluateScript(gr_structure, field);
 			if (!gs.nil(return_variable)) {
-				return_value = evaluator.getVariable(return_variable) + '';
+				return_value = _evaluator.getVariable(return_variable) + '';
 			}
 		} catch (e) {
 			this.logger.logError('Error in conditional script: ' + e);
@@ -315,6 +337,14 @@ SIAMQueue.prototype = {
 		
 		this.logger.logInfo('Returning ' + return_value);
 		return return_value;
+	},
+	
+	_isDateField: function (record, field) {
+		var field_type = record.getElement(field).getED().getInternalType();
+		if ((field_type == "glide_date" || field_type == "glide_date_time" || field_type == "datetime" || field_type == "date")) {
+			return true;
+		}
+		return false;
 	},
 	
 	
@@ -325,7 +355,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>116</sys_mod_count>
+        <sys_mod_count>127</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -333,6 +363,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-02-10 16:01:20</sys_updated_on>
+        <sys_updated_on>2017-02-15 14:38:31</sys_updated_on>
     </sys_script_include>
 </record_update>

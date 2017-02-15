@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_form_sections form_id="2cda4ef34fb07640908b81c18110c77d" sys_domain="global" table="x_snc_siam_light_outbound_trigger" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-02-14 14:33:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a0da4ef34fb07640908b81c18110c77e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_snc_siam_light_outbound_trigger" name="x_snc_siam_light_outbound_trigger" sys_domain="global" view="Default view">2cda4ef34fb07640908b81c18110c77d</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_outbound_trigger" sys_domain="global" view="Default view">fb55e815295382002e68eb689ad1b270</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-02-14 14:33:31</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-02-14 14:33:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>24da4ef34fb07640908b81c18110c77e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_snc_siam_light_outbound_trigger" name="x_snc_siam_light_outbound_trigger" sys_domain="global" view="Default view">2cda4ef34fb07640908b81c18110c77d</sys_ui_form>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_snc_siam_light_outbound_trigger" sys_domain="global" view="Default view">a4da4ef34fb07640908b81c18110c77d</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-02-14 14:33:31</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_snc_siam_light_outbound_trigger</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-02-14 14:33:31</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2cda4ef34fb07640908b81c18110c77d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_siam_light_outbound_trigger</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+            <sys_update_name>sys_ui_form_sections_2cda4ef34fb07640908b81c18110c77d</sys_update_name>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-02-14 14:33:31</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

@@ -2,6 +2,19 @@
 <database>
     <element label="Field map" max_length="40" name="x_snc_siam_light_field_map" type="collection">
         <element label="Coalesce on input" max_length="40" name="coalesce" type="boolean"/>
+        <element choice="2" default="yyyy-MM-dd HH:mm:ss" label="Date format" max_length="40" name="date_format" type="string">
+            <choice>
+                <element label="dd-MM-yyyy" value="dd-MM-yyyy"/>
+                <element label="dd-MM-yyyy HH:mm:ss" value="dd-MM-yyyy HH:mm:ss"/>
+                <element label="dd-MM-yyyy HH:mm:ss z" value="dd-MM-yyyy HH:mm:ss z"/>
+                <element label="MM-dd-yyyy" value="MM-dd-yyyy"/>
+                <element label="MM-dd-yyyy HH:mm:ss" value="MM-dd-yyyy HH:mm:ss"/>
+                <element label="MM-dd-yyyy HH:mm:ss z" value="MM-dd-yyyy HH:mm:ss z"/>
+                <element label="yyyy-dd-MM" value="yyyy-dd-MM"/>
+                <element label="yyyy-MM-dd" value="yyyy-MM-dd"/>
+                <element label="yyyy-MM-dd HH:mm:ss" value="yyyy-MM-dd HH:mm:ss"/>
+            </choice>
+        </element>
         <element display="true" label="External fieldname" max_length="40" name="external_fieldname" type="string"/>
         <element label="Use Script" max_length="40" name="external_fieldname_run_script" type="boolean"/>
         <element default="/**&#13;&#10; * The source variable references the current field_map field&#13;&#10; * The current variable references the current payload&#13;&#10; * The result variable will contain the result of the modification&#13;&#10; **/&#13;&#10;result = (function(source, current) {&#13;&#10;    //write your code here&#13;&#10;    return &quot;resulting value&quot;; &#13;&#10;})(source, current);" label="External fieldname Transform Script" max_length="8000" name="external_fieldname_transform_script" type="script_plain"/>

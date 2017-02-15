@@ -5,13 +5,13 @@
             <element>message_type</element>
             <position>0</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-01-16 19:25:01</sys_created_on>
-            <sys_id>3f67bd266d143200d6cabda1168c4ec3</sys_id>
+            <sys_created_on>2017-02-14 15:20:12</sys_created_on>
+            <sys_id>5485daf74fb07640908b81c18110c731</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-01-16 19:25:01</sys_updated_on>
+            <sys_updated_on>2017-02-14 15:20:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,27 +19,55 @@
             <element>table</element>
             <position>1</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-01-16 19:25:01</sys_created_on>
-            <sys_id>bf67bd266d143200d6cabda1168c4ec3</sys_id>
+            <sys_created_on>2017-02-14 15:20:12</sys_created_on>
+            <sys_id>d485daf74fb07640908b81c18110c731</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-01-16 19:25:01</sys_updated_on>
+            <sys_updated_on>2017-02-14 15:20:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>unqiue_id</element>
+            <element>date_format</element>
             <position>2</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-01-16 19:25:01</sys_created_on>
-            <sys_id>3367bd266d143200d6cabda1168c4ec4</sys_id>
+            <sys_created_on>2017-02-14 15:20:12</sys_created_on>
+            <sys_id>5885daf74fb07640908b81c18110c731</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-01-16 19:25:01</sys_updated_on>
+            <sys_updated_on>2017-02-14 15:20:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-02-14 15:20:12</sys_created_on>
+            <sys_id>d885daf74fb07640908b81c18110c731</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-02-14 15:20:12</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>unqiue_id</element>
+            <position>4</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-02-14 15:20:12</sys_created_on>
+            <sys_id>5c85daf74fb07640908b81c18110c731</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Field Map" display_value="Field Map" name="x_snc_siam_light_field_map" sys_domain="global" view="Default view">26ded0d1295382002e68eb689ad1b23c</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-02-14 15:20:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -55,7 +83,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>26ded0d1295382002e68eb689ad1b23c</sys_id>
-            <sys_mod_count>25</sys_mod_count>
+            <sys_mod_count>29</sys_mod_count>
             <sys_name>Field Map</sys_name>
             <sys_overrides/>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -64,7 +92,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_section_26ded0d1295382002e68eb689ad1b23c</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-01-20 13:30:28</sys_updated_on>
+            <sys_updated_on>2017-02-14 15:20:12</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

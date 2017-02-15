@@ -6,14 +6,14 @@
         <action_delete>false</action_delete>
         <action_insert>true</action_insert>
         <action_query>false</action_query>
-        <action_update>false</action_update>
+        <action_update>true</action_update>
         <active>true</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>x_snc_siam_light_queue</collection>
-        <condition>current.direction == 'input' &amp;&amp; current.state == 'ready'</condition>
+        <condition>current.direction == 'input' &amp;&amp; current.state == 'ready' &amp;&amp; current.retry_count.changes()</condition>
         <description/>
         <execute_function>true</execute_function>
         <filter_condition table="x_snc_siam_light_queue">direction=input^state=ready^EQ<item endquery="false" field="direction" goto="false" newquery="false" operator="=" or="false" value="input"/>
@@ -32,26 +32,45 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[function onAsync(current) {
-   //This function will be automatically called when this rule is processed.
-   var qu = new SIAMQueue(current.message_type, current.target);
-	qu.setSource(current);
-	if (qu.updateRecord()) {
-		current.state = 'processed';
-	}		
-	else {
-		current.state = 'error';
-	}
+	//This function will be automatically called when this rule is processed.
 	
-	current.update();
+	// check if another one is processing already
+	var gr_queue = new GlideRecord('x_snc_siam_light_queue');
+	gr_queue.addQuery('state', 'processing');
+	gr_queue.setLimit(1);
+	gr_queue.query();
+	
+	if (!gr_queue.next()) {
+		current.state = 'processing';
+		current.update();
+		
+		var qu = new SIAMQueue(current.message_type, current.target);
+		qu.setSource(current);
+		if (qu.updateRecord()) {
+			current.state = 'processed';
+		}
+		else {
+			current.state = 'error';
+		}
+		
+		current.update();
+	} else {
+		if (current.retry_count < gs.getProperty('x_snc_siam_light.max_retry_count', 5)) {
+			current.retry_count = current.retry_count+1;
+		} else {
+			current.state = 'error';			
+		}
+		current.update();
+	}
 }]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-23 07:30:10</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>6dad64d5295382002e68eb689ad1b23d</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Process Input entry</sys_name>
         <sys_overrides/>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -60,7 +79,7 @@
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_6dad64d5295382002e68eb689ad1b23d</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-03-01 08:42:56</sys_updated_on>
+        <sys_updated_on>2017-02-15 15:25:14</sys_updated_on>
         <template/>
         <when>async</when>
     </sys_script>
