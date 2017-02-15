@@ -327,6 +327,8 @@ SIAMQueue.prototype = {
 				}
 			}
 			
+			_evaluator.putVariable('log', this.logger);
+			
 			return_value =  _evaluator.evaluateScript(gr_structure, field);
 			if (!gs.nil(return_variable)) {
 				return_value = _evaluator.getVariable(return_variable) + '';
@@ -355,7 +357,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>127</sys_mod_count>
+        <sys_mod_count>128</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -363,6 +365,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-02-15 14:38:31</sys_updated_on>
+        <sys_updated_on>2017-02-15 15:47:33</sys_updated_on>
     </sys_script_include>
 </record_update>
