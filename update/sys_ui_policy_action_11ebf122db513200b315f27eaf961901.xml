@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>ignore</disabled>
+        <field>payload_is_body</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>daniel.draes</sys_created_by>
+        <sys_created_on>2017-03-07 12:47:25</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>11ebf122db513200b315f27eaf961901</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>payload_is_body</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_ui_policy_action_11ebf122db513200b315f27eaf961901</sys_update_name>
+        <sys_updated_by>daniel.draes</sys_updated_by>
+        <sys_updated_on>2017-03-07 12:47:25</sys_updated_on>
+        <table>x_snc_siam_light_message_type</table>
+        <ui_policy display_value="REST Message">256daddd478d5e002e688d90f70935fc</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>

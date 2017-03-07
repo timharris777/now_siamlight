@@ -33,6 +33,12 @@ SIAMQueue.prototype = {
 		this.coalesce_fields.addQuery('coalesce', 'true');
 		this.coalesce_fields.query();
 		
+		// get unique field for later
+		this.unique_field = new GlideRecord(this.FLDMAP);
+		this.unique_field.addQuery('message_type', msgType);
+		this.unique_field.addQuery('unqiue_id', 'true');
+		this.unique_field.query();
+		
 		this.target = target;
 		
 		this.logger = new SIAMLogger();
@@ -90,10 +96,17 @@ SIAMQueue.prototype = {
 			
 			while(gr_structure.next()) {
 				var gr_child = new GlideRecord(gr_structure.included_message_type.table);
-				gr_child.addQuery(gr_structure.reference_value_field, source_record.sys_id);
+				if (gr_structure.child_sysid) {
+					gr_child.addQuery(gr_structure.reference_value_field, source_record.sys_id);
+				}
+				if (gr_structure.parent_sysid) {
+					gr_child.addQuery('sys_id', source_record.getValue(gr_structure.child_value_field));
+				}
 				if (!gs.nil(gr_structure.output_condition)) {
 					gr_child.addEncodedQuery(gr_structure.output_condition);
 				}
+				
+				this.logger.logDebug('Search records for structure ' + gr_structure.external_fieldname + ' with query ' + gr_child.getEncodedQuery());
 				gr_child.query();
 				this.record[gr_structure.external_fieldname] = {};
 				while (gr_child.next()) {
@@ -112,7 +125,10 @@ SIAMQueue.prototype = {
 								'result': null
 							};
 							
-							this.record[gr_structure.external_fieldname][_field_map.external_fieldname] = this._evaluateScript(_field_map, 'field_transform_script', vars2, 'result');
+							var script_result = this._evaluateScript(_field_map, 'field_transform_script', vars2, 'result');
+							var decoded_results = new global.JSON().decode(script_result);
+							
+							this.record[gr_structure.external_fieldname][_field_map.external_fieldname] = decoded_results;
 						} else if ( _output_type == 'database') {
 							this.record[gr_structure.external_fieldname][_field_map.external_fieldname] = gr_child.getValue(_field_map.field);
 						} else if (_output_type == 'display') {
@@ -130,32 +146,51 @@ SIAMQueue.prototype = {
 		var gr_target;
 		var created_sysid = '0';
 		
+		var unique_value = null;
 		if (this.field_map.hasNext()) {
 			// match record against database if possible
-			var gr_search = new GlideRecord(this.msgType.table);
-			while (this.coalesce_fields.next()) {
-				var search_value = '';
-				if (this.coalesce_fields.external_fieldname_run_script == true) {
-					search_value = this._executeInboundScript(this.coalesce_fields);
+			// 1. via unique field (ext_id table)
+			if (this.unique_field.next()) {
+				if (this.unique_field.external_fieldname_run_script == true) {
+					unique_value = this._executeInboundScript(this.unique_field);
 				} else  {
-					search_value =  this.record[this.coalesce_fields.external_fieldname];
+					unique_value =  this.record[this.unique_field.external_fieldname];
 				}
-				gr_search.addQuery(this.coalesce_fields.field, search_value);
+				
+				var ext_id = new SIAMExtID(null, this.target, unique_value);
+				gr_target = ext_id.getInternalRecord();
+				
+				if (!gs.nil(gr_target)) {
+					this.logger.logInfo('Found record via external ID: ' + gr_target.sys_id);
+				}
 			}
-			var enc_query = gr_search.getEncodedQuery();
-			if (!gs.nil(enc_query)) {
-				this.logger.logDebug('Search existing records with query: ' + enc_query);
-				gr_search.query();
-				if ( gr_search.next()) {
-					gr_target = gr_search;
-					if (this.queue.action != 'update' && this.queue.action != 'insert_or_update') {
-						this.logger.logError('Record already exists, need update action');
-						return false;
+			
+			var search_value = '';
+			if (gs.nil(gr_target)) {
+				// 2. try via coalesce fields
+				var gr_search = new GlideRecord(this.msgType.table);
+				while (this.coalesce_fields.next()) {
+					search_value = '';
+					if (this.coalesce_fields.external_fieldname_run_script == true) {
+						search_value = this._executeInboundScript(this.coalesce_fields);
+					} else  {
+						search_value =  this.record[this.coalesce_fields.external_fieldname];
 					}
-					this.logger.logInfo('Found existing target record: ' + gr_target.getDisplayValue());
+					gr_search.addQuery(this.coalesce_fields.field, search_value);
+				}
+				var enc_query = gr_search.getEncodedQuery();
+				if (!gs.nil(enc_query)) {
+					this.logger.logDebug('Search existing records with query: ' + enc_query);
+					gr_search.query();
+					if ( gr_search.next()) {
+						gr_target = gr_search;
+						
+						this.logger.logInfo('Found Record via coalesce fields: ' + gr_target);
+					}
 				}
 			}
-			// if nothing is assigned till now, create new record
+			
+			// verify supplied action matches our state
 			if (gs.nil(gr_target))  {
 				if (this.queue.action != 'insert' && this.queue.action != 'insert_or_update') {
 					this.logger.logError('Record does not exist, need insert action');
@@ -164,22 +199,41 @@ SIAMQueue.prototype = {
 				this.logger.logInfo('No existing target found, creating new record in table ' + this.msgType.table);
 				gr_target =  new GlideRecord(this.msgType.table);
 				gr_target.initialize();
+			} else {
+				if (this.queue.action != 'update' && this.queue.action != 'insert_or_update' && this.queue.action != 'delete') {
+					this.logger.logError('Record already exists, need update action');
+					return false;
+				}
+				this.logger.logInfo('Found existing target record: ' + gr_target.getDisplayValue());
 			}
 			
-			this._mapFieldsToGr(this.field_map, gr_target);
-			var rc = gr_target.update();
-			if (rc == null) {
-				this.logger.logError('Error during save');
-				return false;
-			}
-			// store return value
-			created_sysid = gr_target.sys_id;
-			
-			// only update queue record if it is empty, otherwise we are a nested element
-			if (SIAMUtil.nil(this.queue.reference_record)) {
-				this.queue.reference_table = gr_target.getRecordClassName();
-				this.queue.reference_record = gr_target.sys_id;
-				this.queue.update();
+			if (this.queue.action == 'delete') {
+				this.logger.logInfo('Deleting target record due to defined action');
+				if (!gr_target.deleteRecord()) {
+					this.logger.logError('Could not delete record due to: ' + gr_target.getLastErrorMessage());
+				}
+			} else {
+				this._mapFieldsToGr(this.field_map, gr_target);
+				var rc = gr_target.update();
+				if (rc == null) {
+					this.logger.logError('Error during save');
+					return false;
+				}
+				// store return value
+				created_sysid = gr_target.sys_id;
+				
+				// update SIAM Ext ID with external ID if any
+				if (!gs.nil(unique_value)) {
+					var se_id = new SIAMExtID(gr_target, this.target);
+					se_id.registerExternalId(unique_value);
+				}
+				
+				// only update queue record if it is empty, otherwise we are a nested element
+				if (SIAMUtil.nil(this.queue.reference_record)) {
+					this.queue.reference_table = gr_target.getRecordClassName();
+					this.queue.reference_record = gr_target.sys_id;
+					this.queue.update();
+				}
 			}
 		}
 		
@@ -217,14 +271,14 @@ SIAMQueue.prototype = {
 						var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
 						siamq._setRecord(incl_record[i]);
 						siamq._setQueueRecord(this.queue);
-						if (gr_structure.child_sysid) {
+						if (gr_structure.child_sysid && gr_target) {
 							this.logger.logInfo('Updating child table field ' + gr_structure.reference_value_field + ' with reference to ' + gr_target.sys_id);
 							
 							siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
 						}
 						var child_sys_id = siamq.updateRecord();
 						
-						if (gr_structure.parent_sysid) {
+						if (gr_target && gr_structure.parent_sysid && child_sys_id) {
 							this.logger.logInfo('Updating parent table field ' + gr_structure.child_value_field + ' with reference to ' + child_sys_id);
 							gr_target.setValue(gr_structure.child_value_field, child_sys_id);
 							gr_target.update();
@@ -278,7 +332,11 @@ SIAMQueue.prototype = {
 	_mapFieldsToGr: function(field_map, gr_target) {
 		while (field_map.next()) {
 			if (this.field_map.external_fieldname_run_script == true) {
-				this._setRecordValue(gr_target, field_map.field, this._executeInboundScript(field_map));
+				var script_result = this._executeInboundScript(field_map);
+				// need to check against string value undefined, seems due to evalutor converting the javascript object to java
+				if (script_result != undefined && script_result != 'undefined') {
+					this._setRecordValue(gr_target, field_map.field, script_result);
+				}
 			} else if (this._isDateField(gr_target, field_map.field )) {
 				var du = new DateUtil();
 				var dt_ms = du.getDateFromFormat(this.record[field_map.external_fieldname], field_map.date_format);
@@ -324,6 +382,7 @@ SIAMQueue.prototype = {
 			for (var key in vars) {
 				if (vars.hasOwnProperty(key)) {
 					_evaluator.putVariable(key, vars[key]);
+					this.logger.logDebug('Setting ' + key + ' to content: ' + JSON.stringify(vars[key]));
 				}
 			}
 			
@@ -337,16 +396,23 @@ SIAMQueue.prototype = {
 			this.logger.logError('Error in conditional script: ' + e);
 		}
 		
-		this.logger.logInfo('Returning ' + return_value);
+		this.logger.logInfo('Returning ' + return_value + ' for ' + field);
 		return return_value;
 	},
 	
+	
 	_isDateField: function (record, field) {
-		if (record && field) {
-			var field_type = record.getElement(field).getED().getInternalType();
-			if ((field_type == "glide_date" || field_type == "glide_date_time" || field_type == "datetime" || field_type == "date")) {
-				return true;
+		
+		this.logger.logDebug('Checking field ' + field + ' for date type on table ' + record.getRecordClassName());
+		try {
+			if (record && field) {
+				var field_type = record.getElement(field).getED().getInternalType();
+				if ((field_type == "glide_date" || field_type == "glide_date_time" || field_type == "datetime" || field_type == "date")) {
+					return true;
+				}
 			}
+		} catch (e) {
+			this.logger.logError('Could not get internal type for field ' + field);
 		}
 		return false;
 	},
@@ -359,7 +425,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>129</sys_mod_count>
+        <sys_mod_count>138</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -367,6 +433,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-02-16 20:17:08</sys_updated_on>
+        <sys_updated_on>2017-03-07 10:06:16</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -11,6 +11,7 @@
                 <element label="Generic  Pull" sequence="2" value="generic"/>
             </choice>
         </element>
+        <element label="Use SIAM Payload as body" max_length="40" name="payload_is_body" type="boolean"/>
         <element dependent="rest_message" dependent_on_field="rest_message" label="Rest HTTP Method" max_length="32" name="rest_http_method" reference="sys_rest_message_fn" type="reference" use_dependent_field="true"/>
         <element label="REST Message" max_length="32" name="rest_message" reference="sys_rest_message" type="reference"/>
         <element label="SOAP Message" max_length="32" name="soap_message" reference="sys_soap_message" type="reference"/>
