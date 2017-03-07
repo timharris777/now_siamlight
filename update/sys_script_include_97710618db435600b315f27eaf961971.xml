@@ -18,27 +18,61 @@ SIAMExtID.prototype = {
 	ext_id: '',
 	
 	
-	initialize: function(internal_record, target_sys_id) {
-		
-		this.table = internal_record.getRecordClassName();
-		this.int_id = internal_record.sys_id;
-		this.target = target_sys_id;
-		
+	
+	/* initializes the ExtId object with a glideRecord of the record in question
+ 	* and the target system (provider) */
+	initialize: function(internal_record, target_sys_id, external_id) {
 		var gr_ext_id = new GlideRecord(this.EXT_ID_TABLE);
-		gr_ext_id.addQuery('table', this.table);
-		gr_ext_id.addQuery('internal_id', this.int_id);
-		gr_ext_id.addQuery('target', this.target);
 		
-		gr_ext_id.query();
-		if (gr_ext_id.next()) {
-			this.ext_id = gr_ext_id.getValue('external_id');
+		if (target_sys_id) {
+			this.target = target_sys_id;
+		}
+		
+		if (internal_record) {
+			this.table = internal_record.getRecordClassName();
+			this.int_id = internal_record.sys_id;
+			
+			gr_ext_id.addQuery('table', this.table);
+			gr_ext_id.addQuery('internal_id', this.int_id);
+			gr_ext_id.addQuery('target', this.target);
+			
+			gr_ext_id.query();
+			if (gr_ext_id.next()) {
+				this.ext_id = gr_ext_id.getValue('external_id');
+			}
+		}
+		
+		if (external_id) {
+			gr_ext_id.addQuery('target', this.target);
+			gr_ext_id.addQuery('external_id', external_id);
+			
+			gs.info('Search external ID with: ' + gr_ext_id.getEncodedQuery());
+			gr_ext_id.query();
+			if (gr_ext_id.next()) {
+				this.int_id = gr_ext_id.getValue('internal_id');
+				this.table = gr_ext_id.getValue('table');
+			}
 		}
 	},
+	
+	
+	
 	
 	/* returns external id if any, empty string if not
  	*/
 	getExternalId: function() {
 		return this.ext_id;
+	},
+	
+	/* returns the interl record if any, null if not */
+	getInternalRecord: function() {
+		if (this.table && this.int_id) {
+			var grRecord = new GlideRecord(this.table);
+			if (grRecord.get(this.int_id))
+				return grRecord;
+		}
+		return null;
+		
 	},
 	
 	/* stores new external id
@@ -65,9 +99,9 @@ SIAMExtID.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-04-23 21:06:48</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>97710618db435600b315f27eaf961971</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>SIAMExtID</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -75,6 +109,6 @@ SIAMExtID.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_97710618db435600b315f27eaf961971</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-04-27 14:04:24</sys_updated_on>
+        <sys_updated_on>2017-03-07 13:27:31</sys_updated_on>
     </sys_script_include>
 </record_update>
