@@ -27,7 +27,7 @@
         <foreign_database/>
         <internal_type display_value="Conditions">conditions</internal_type>
         <mandatory>false</mandatory>
-        <max_length>254</max_length>
+        <max_length>1000</max_length>
         <name>x_snc_siam_light_outbound_trigger</name>
         <next_element/>
         <primary>false</primary>
@@ -46,9 +46,9 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-23 06:48:06</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>a96f37addb902600b315f27eaf961959</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Condition</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy/>
@@ -56,7 +56,7 @@
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_siam_light_outbound_trigger_condition</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-01-17 07:23:58</sys_updated_on>
+        <sys_updated_on>2017-03-15 14:43:14</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

@@ -22,7 +22,7 @@ SIAMOutboundProcessor.prototype = {
 		gr_trigger.addQuery('table', table);
 		gr_trigger.addQuery('target.active', 'true');
 		gr_trigger.addQuery('action_' + record.operation(), 'true');
-
+		
 		gr_trigger.query();
 		var matches = false;
 		while (matches == false && gr_trigger.next()) {
@@ -52,16 +52,16 @@ SIAMOutboundProcessor.prototype = {
 		gr_trigger.addQuery('action_' + record.operation(), 'true');
 		
 		gr_trigger.query();
-	//	 gs.addInfoMessage('Checking ' + gr_trigger.getRowCount() + ' number of trigger conditions on table ' + table);
+		//	 gs.addInfoMessage('Checking ' + gr_trigger.getRowCount() + ' number of trigger conditions on table ' + table);
 		while ( gr_trigger.next()) {
 			var matches = GlideFilter.checkRecord(record, gr_trigger.condition);
 			if (matches) {
-		//		gs.addInfoMessage('Record matching condition: ' + gr_trigger.condition);
+				//		gs.addInfoMessage('Record matching condition: ' + gr_trigger.condition);
 				var qu = new SIAMQueue(gr_trigger.message_type, gr_trigger.target);
 				qu.setSource(record);
 				qu.createOutput();
 			} else {
-		//		gs.addInfoMessage('Record **NOT** matching condition: ' + gr_trigger.condition);
+				//		gs.addInfoMessage('Record **NOT** matching condition: ' + gr_trigger.condition);
 			}
 		}
 		
@@ -87,18 +87,20 @@ SIAMOutboundProcessor.prototype = {
 			
 			
 			if (status == '200' || status == '201') {
-				current.state = 'processed';
+				queue_entry.state = 'processed';
 				
 				// in case of insert try to capture the external ID
 				if (!this.update) {
-					var uid = this._extractExternalId(responseBody);
+					var uid = this._extractExternalId(queue_entry, responseBody);
 					
 					this.logger.logInfo('Target returned UID: ' + uid);
-					var data_rec = new GlideRecord(queue_entry.reference_table);
-					data_rec.get(queue_entry.reference_record);
-					
-					var sid = new SIAMExtID(data_rec, queue_entry.target);
-					sid.registerExternalId(uid);
+					if (!gs.nil(uid)) {
+						var data_rec = new GlideRecord(queue_entry.reference_table);
+						data_rec.get(queue_entry.reference_record);
+						
+						var sid = new SIAMExtID(data_rec, queue_entry.target);
+						sid.registerExternalId(uid);
+					}
 				}
 				
 			} else {
@@ -118,9 +120,9 @@ SIAMOutboundProcessor.prototype = {
 	
 	/* parses the returned body for a unique identified
  	*/
-	_extractExternalId: function (responseBody) {
+	_extractExternalId: function (queue_entry, responseBody) {
 		// extract UID
-		var mt = current.message_type.getRefRecord();
+		var mt = queue_entry.message_type.getRefRecord();
 		var uid_path = mt.getValue('uid_path');
 		var uid;
 		
@@ -150,7 +152,7 @@ SIAMOutboundProcessor.prototype = {
 	/* prepares a SOAP or REST message to be send
  	*/
 	_prepareMessage: function (queue_entry) {
-		var mt = current.message_type.getRefRecord();
+		var mt = queue_entry.message_type.getRefRecord();
 		
 		var ext_id = this._getExternalId(queue_entry);
 		
@@ -179,7 +181,7 @@ SIAMOutboundProcessor.prototype = {
 				return;
 			}
 			
-						
+			
 		} else if (mt.outbound_type == 'rest') {
 			var rest_message = mt.rest_message.getRefRecord();
 			
@@ -209,22 +211,22 @@ SIAMOutboundProcessor.prototype = {
 			
 		}
 		
-			// set fields / variable substitution
-			var record = new global.JSON().decode(queue_entry.payload);
-			var smp = new GlideRecord('x_snc_siam_light_field_map');
-			smp.addQuery('message_type', mt.sys_id);
-			smp.query();
-			while (smp.next()) {
-				var value = record[smp.external_fieldname];
-				if (smp.unqiue_id == true) {
-					value = ext_id;
-				}
-				this.logger.logDebug('Setting ' + smp.external_fieldname + ' to value <' + value +'>');
-				msg.setStringParameter(msg_function + '.' + smp.external_fieldname, value);
-				msg.setStringParameter(smp.external_fieldname, value);
+		// set fields / variable substitution
+		var record = new global.JSON().decode(queue_entry.payload);
+		var smp = new GlideRecord('x_snc_siam_light_field_map');
+		smp.addQuery('message_type', mt.sys_id);
+		smp.query();
+		while (smp.next()) {
+			var value = record[smp.external_fieldname];
+			if (smp.unqiue_id == true) {
+				value = ext_id;
 			}
+			this.logger.logDebug('Setting ' + smp.external_fieldname + ' to value <' + value +'>');
+			msg.setStringParameter(msg_function + '.' + smp.external_fieldname, value);
+			msg.setStringParameter(smp.external_fieldname, value);
+		}
 		
-		// overwrite body if required 
+		// overwrite body if required
 		if (mt.payload_is_body) {
 			this.logger.logDebug('Setting message body to SIAM payload');
 			msg.setRequestBody(queue_entry.payload);
@@ -251,7 +253,7 @@ SIAMOutboundProcessor.prototype = {
         <sys_created_on>2015-10-23 07:05:35</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
-        <sys_mod_count>77</sys_mod_count>
+        <sys_mod_count>79</sys_mod_count>
         <sys_name>SIAMOutboundProcessor</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -259,6 +261,6 @@ SIAMOutboundProcessor.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_98192495295382002e68eb689ad1b24f</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-03-07 12:53:14</sys_updated_on>
+        <sys_updated_on>2017-03-15 14:43:32</sys_updated_on>
     </sys_script_include>
 </record_update>
