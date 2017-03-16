@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="service_providers" label="Service Providers Edit Service Providers" language="en" table="x_snc_siam_light_message_type">
+    <sys_documentation element="service_providers" label="Service Providers" language="en" table="x_snc_siam_light_message_type">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element>service_providers</element>
             <help/>
             <hint/>
-            <label>Service Providers Edit Service Providers</label>
+            <label>Service Providers</label>
             <language>en</language>
             <name>x_snc_siam_light_message_type</name>
-            <plural>Service Providers Edit Service Providers</plural>
+            <plural>Service Providers</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2017-03-16 07:33:50</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_customer_update>true</sys_customer_update>
             <sys_id>117ac75ddbe9b200b315f27eaf961927</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Service Providers Edit Service Providers</sys_name>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Service Providers</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_documentation_x_snc_siam_light_message_type_service_providers_en</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:33:50</sys_updated_on>
+            <sys_updated_on>2017-03-16 07:34:41</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>
