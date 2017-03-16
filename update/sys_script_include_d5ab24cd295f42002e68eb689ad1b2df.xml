@@ -110,12 +110,11 @@ SIAMQueue.prototype = {
 				gr_child.query();
 				this.record[gr_structure.external_fieldname] = {};
 				while (gr_child.next()) {
-					// TODO: use extracted method to map record to JSON string
 					
 					var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
 					siamq.setSource(gr_child);
 					this.record[gr_structure.external_fieldname] = siamq._getRecord();
-
+					
 				}
 			}
 			
@@ -127,6 +126,9 @@ SIAMQueue.prototype = {
 		var created_sysid = '0';
 		
 		var unique_value = null;
+		// prepare search statement
+		
+		var gr_search = new GlideRecord(this.msgType.table);
 		if (this.field_map.hasNext()) {
 			// match record against database if possible
 			// 1. via unique field (ext_id table)
@@ -145,10 +147,14 @@ SIAMQueue.prototype = {
 				}
 			}
 			
+			// 2. try via reference field info if available
+			if (gs.nil(gr_target) && !gs.nil(this.reference_field) && !gs.nil(this.reference_value)) {
+				gr_search.addQuery(this.reference_field, this.reference_value);
+			}
+			
+			// 3. add coalesce fields
 			var search_value = '';
 			if (gs.nil(gr_target)) {
-				// 2. try via coalesce fields
-				var gr_search = new GlideRecord(this.msgType.table);
 				while (this.coalesce_fields.next()) {
 					search_value = '';
 					if (this.coalesce_fields.external_fieldname_run_script == true) {
@@ -251,10 +257,17 @@ SIAMQueue.prototype = {
 						var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
 						siamq._setRecord(incl_record[i]);
 						siamq._setQueueRecord(this.queue);
-						if (gr_structure.child_sysid && gr_target) {
-							this.logger.logInfo('Updating child table field ' + gr_structure.reference_value_field + ' with reference to ' + gr_target.sys_id);
-							
-							siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
+						
+						// set reference info of available
+						if (gr_target) {
+							if (gr_structure.parent_sysid) {
+								this.logger.logInfo('Updating child table field sys_id with reference to ' + gr_target.getValue(gr_structure.child_value_field));
+								siamq._setReferenceInfo('sys_id', gr_target.getValue(gr_structure.child_value_field));
+							}
+							if (gr_structure.child_sysid) {
+								this.logger.logInfo('Updating child table field ' + gr_structure.reference_value_field + ' with reference to ' + gr_target.sys_id);
+								siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
+							}
 						}
 						var child_sys_id = siamq.updateRecord();
 						
@@ -410,7 +423,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>142</sys_mod_count>
+        <sys_mod_count>143</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -418,6 +431,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-03-15 14:43:41</sys_updated_on>
+        <sys_updated_on>2017-03-16 07:20:28</sys_updated_on>
     </sys_script_include>
 </record_update>
