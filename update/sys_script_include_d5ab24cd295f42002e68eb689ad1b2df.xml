@@ -66,6 +66,7 @@ SIAMQueue.prototype = {
 			this.record = {};
 			while (this.field_map.next()) {
 				var output_type = this.field_map.output_value;
+				var output_value;
 				
 				if (this.field_map.field_run_script == true) {
 					
@@ -75,18 +76,20 @@ SIAMQueue.prototype = {
 						'result': null
 					};
 					
-					this.record[this.field_map.external_fieldname] = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result');
+					output_value = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result', this.field_map.use_json_datatype);
 					
 				} else if (this._isDateField(source_record, this.field_map.field)) {
 					var gd = new GlideDate();
 					gd.setValue(source_record.getValue(this.field_map.field));
-					this.record[this.field_map.external_fieldname] = gd.getByFormat(this.field_map.date_format + "");
+					output_value =  gd.getByFormat(this.field_map.date_format + "");
 				} else if (output_type == 'database') {
-					this.record[this.field_map.external_fieldname] = source_record.getValue(this.field_map.field);
+					output_value = source_record.getValue(this.field_map.field);
 				} else if (output_type == 'display') {
-					this.record[this.field_map.external_fieldname] = source_record.getDisplayValue(this.field_map.field);
+					output_value = source_record.getDisplayValue(this.field_map.field);
 				}
-				this.logger.logDebug('Mapped ' + this.field_map.field + ' to ' + this.field_map.external_fieldname + ' with value <' + this.record[this.field_map.external_fieldname] +'>');
+				
+				this._setPayloadValue(this.field_map.external_fieldname, output_value, this.field_map.use_json_datatype);
+				this.logger.logDebug('Mapped ' + this.field_map.field + ' to ' + this.field_map.external_fieldname + ' with value <' + output_value +'>');
 			}
 			
 			// now process additional structers if any
@@ -108,12 +111,24 @@ SIAMQueue.prototype = {
 				
 				this.logger.logDebug('Search records for structure ' + gr_structure.external_fieldname + ' with query ' + gr_child.getEncodedQuery());
 				gr_child.query();
-				this.record[gr_structure.external_fieldname] = {};
-				while (gr_child.next()) {
-					
-					var siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
-					siamq.setSource(gr_child);
-					this.record[gr_structure.external_fieldname] = siamq._getRecord();
+				
+				// check for 1:1 or 1:n relations. 1:n require an array
+				var siamq;
+				if (gr_structure.cardinality == 'n') {
+					this.record[gr_structure.external_fieldname] = [];
+				
+					while (gr_child.next()) {
+						siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
+						siamq.setSource(gr_child);
+						this.record[gr_structure.external_fieldname].push(siamq._getRecord());
+					}
+				} else {
+					// only one required
+					if (gr_child.next()) {
+						siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
+						siamq.setSource(gr_child);
+						this.record[gr_structure.external_fieldname] = siamq._getRecord();
+					}
 					
 				}
 			}
@@ -303,6 +318,35 @@ SIAMQueue.prototype = {
 		this.logger.setQueueReference(qu_id);
 	},
 	
+	_setPayloadValue: function(field, value, use_json_type) {
+		if (value != undefined) {
+			// default to string 
+			var v;
+			
+			if (use_json_type) {
+				if (isNaN(value)) {
+					// if it is not a number it may be boolean
+					if (value == 'true') {
+						v = true;
+					} else if (value == 'false') {
+						v = false;
+					} else {
+						// default to string
+						v = value + '';
+					}
+				}
+				else  {
+					// it was a number, use parsed value
+					v = parseFloat(value);
+				}
+			} else {
+				v = value;
+			}
+			
+			this.record[field] = v;
+		}
+	},
+	
 	_setRecordValue: function(gr, field, value) {
 		if (value != undefined) {
 			this.logger.logDebug('Inbound Mapping: Set ' + field + ' to ' + value );
@@ -423,7 +467,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>143</sys_mod_count>
+        <sys_mod_count>149</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -431,6 +475,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-03-16 07:20:28</sys_updated_on>
+        <sys_updated_on>2017-03-21 21:05:13</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -30,6 +30,7 @@
         </element>
         <element label="Table" max_length="80" name="table" read_only="true" type="table_name"/>
         <element label="Unique Identifier" max_length="40" name="unqiue_id" type="boolean"/>
+        <element hint="Tries to convert the value into a native JSON type of boolean or number if possible. " label="Use JSON Datatype" max_length="40" name="use_json_datatype" type="boolean"/>
         <index name="index">
             <element name="external_fieldname"/>
         </index>
