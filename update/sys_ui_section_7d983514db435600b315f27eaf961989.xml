@@ -4,25 +4,25 @@
         <sys_ui_annotation action="INSERT_OR_UPDATE">
             <is_plain_text>false</is_plain_text>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:34:42</sys_created_on>
-            <sys_id>02aa0b5ddbe9b200b315f27eaf961925</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>fa8bbe08db757600b315f27eaf96192d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:34:42</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <text>For SOAP use XPath notation, for REST use dot-walking.</text>
             <type display_value="Info Box Blue">753f88a80f930000b12e6903cfe01206</type>
         </sys_ui_annotation>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>02aa0b5ddbe9b200b315f27eaf961925</element>
+            <element>fa8bbe08db757600b315f27eaf96192d</element>
             <position>0</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:34:42</sys_created_on>
-            <sys_id>82aa0b5ddbe9b200b315f27eaf961925</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>7e8bbe08db757600b315f27eaf96192d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Result configuration" display_value="Result configuration" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">7d983514db435600b315f27eaf961989</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:34:42</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <type>annotation</type>
         </sys_ui_element>
@@ -30,13 +30,13 @@
             <element>uid_path</element>
             <position>1</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:34:42</sys_created_on>
-            <sys_id>06aa0b5ddbe9b200b315f27eaf961925</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>fe8bbe08db757600b315f27eaf96192d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Result configuration" display_value="Result configuration" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">7d983514db435600b315f27eaf961989</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:34:42</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -44,13 +44,13 @@
             <element>.split</element>
             <position>2</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:34:42</sys_created_on>
-            <sys_id>86aa0b5ddbe9b200b315f27eaf961925</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>728bbe08db757600b315f27eaf96192e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Result configuration" display_value="Result configuration" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">7d983514db435600b315f27eaf961989</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:34:42</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -66,7 +66,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>7d983514db435600b315f27eaf961989</sys_id>
-            <sys_mod_count>20</sys_mod_count>
+            <sys_mod_count>22</sys_mod_count>
             <sys_name>Result configuration</sys_name>
             <sys_overrides/>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -75,7 +75,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_section_7d983514db435600b315f27eaf961989</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-21 21:09:17</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

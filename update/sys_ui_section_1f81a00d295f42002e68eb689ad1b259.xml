@@ -5,13 +5,13 @@
             <element>name</element>
             <position>0</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:33:50</sys_created_on>
-            <sys_id>617ac75ddbe9b200b315f27eaf961929</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>728bbe08db757600b315f27eaf961928</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">1f81a00d295f42002e68eb689ad1b259</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:33:50</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,13 +19,13 @@
             <element>.split</element>
             <position>1</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:33:50</sys_created_on>
-            <sys_id>e17ac75ddbe9b200b315f27eaf961929</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>f28bbe08db757600b315f27eaf961928</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">1f81a00d295f42002e68eb689ad1b259</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:33:50</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -33,13 +33,41 @@
             <element>service_providers</element>
             <position>2</position>
             <sys_created_by>daniel.draes</sys_created_by>
-            <sys_created_on>2017-03-16 07:33:50</sys_created_on>
-            <sys_id>657ac75ddbe9b200b315f27eaf961929</sys_id>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>768bbe08db757600b315f27eaf961928</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">1f81a00d295f42002e68eb689ad1b259</sys_ui_section>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-16 07:33:50</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>3</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>f68bbe08db757600b315f27eaf961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">1f81a00d295f42002e68eb689ad1b259</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>table</element>
+            <position>4</position>
+            <sys_created_by>daniel.draes</sys_created_by>
+            <sys_created_on>2017-03-24 19:31:57</sys_created_on>
+            <sys_id>7a8bbe08db757600b315f27eaf961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_siam_light_message_type" sys_domain="global" view="Default view">1f81a00d295f42002e68eb689ad1b259</sys_ui_section>
+            <sys_updated_by>daniel.draes</sys_updated_by>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -55,7 +83,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>1f81a00d295f42002e68eb689ad1b259</sys_id>
-            <sys_mod_count>19</sys_mod_count>
+            <sys_mod_count>21</sys_mod_count>
             <sys_name>x_snc_siam_light_message_type</sys_name>
             <sys_overrides/>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -64,7 +92,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_section_1f81a00d295f42002e68eb689ad1b259</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-21 21:09:14</sys_updated_on>
+            <sys_updated_on>2017-03-24 19:31:57</sys_updated_on>
             <sys_user/>
             <title>true</title>
             <view display_value="Default view" name="NULL">Default view</view>

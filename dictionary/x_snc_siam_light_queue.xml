@@ -21,6 +21,7 @@
         <element label="Payload" max_length="4000" name="payload" type="string"/>
         <element dependent="reference_table" dependent_on_field="reference_table" label="Reference Record" max_length="32" name="reference_record" type="document_id" use_dependent_field="true"/>
         <element label="Reference Table" max_length="80" name="reference_table" type="table_name"/>
+        <element label="Response Body" max_length="4000" name="response_body" read_only="true" type="string"/>
         <element label="Response to" max_length="32" name="response_to" reference="x_snc_siam_light_queue" type="reference"/>
         <element default="0" label="Retry Count" max_length="40" name="retry_count" read_only="true" type="integer"/>
         <element choice="1" choice_field="state" choice_table="ecc_queue" label="State" max_length="40" name="state" type="string">
