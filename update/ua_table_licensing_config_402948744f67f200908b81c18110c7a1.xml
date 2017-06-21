@@ -2,29 +2,23 @@
 <record_update table="ua_table_licensing_config">
     <ua_table_licensing_config action="INSERT_OR_UPDATE">
         <is_fulfillment>false</is_fulfillment>
-        <license_condition/>
-        <license_model>none</license_model>
-        <license_roles/>
-        <name>x_snc_siam_light_external_id</name>
-        <op_delete>true</op_delete>
-        <op_insert>true</op_insert>
-        <op_update>true</op_update>
-        <owner_condition table="x_snc_siam_light_external_id">sys_created_by=javascript:gs.getUserName()^EQ<item endquery="false" field="sys_created_by" goto="false" newquery="false" operator="=" or="false" value="javascript:gs.getUserName()"/>
+        <name>x_snc_siam_light_message_type</name>
+        <owner_condition table="x_snc_siam_light_message_type">sys_created_by=javascript:gs.getUserName()^EQ<item endquery="false" field="sys_created_by" goto="false" newquery="false" operator="=" or="false" value="javascript:gs.getUserName()"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </owner_condition>
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>system</sys_created_by>
-        <sys_created_on>2016-05-16 17:21:07</sys_created_on>
+        <sys_created_on>2016-05-16 17:21:08</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>b9358cbc372fb600b2e8021a54990eb6</sys_id>
+        <sys_id>402948744f67f200908b81c18110c7a1</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>x_snc_siam_light_external_id</sys_name>
+        <sys_name>x_snc_siam_light_message_type</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
-        <sys_update_name>ua_table_licensing_config_b9358cbc372fb600b2e8021a54990eb6</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_402948744f67f200908b81c18110c7a1</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2016-05-16 17:21:07</sys_updated_on>
+        <sys_updated_on>2016-05-16 17:21:08</sys_updated_on>
     </ua_table_licensing_config>
 </record_update>

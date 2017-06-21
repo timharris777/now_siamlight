@@ -9,7 +9,7 @@
         <name>SIAMQueue</name>
         <script><![CDATA[var SIAMQueue = Class.create();
 SIAMQueue.prototype = {
-	
+	 
 	QUEUE: 'x_snc_siam_light_queue',
 	MSGTYPE: 'x_snc_siam_light_message_type',
 	FLDMAP: 'x_snc_siam_light_field_map',
@@ -50,11 +50,8 @@ SIAMQueue.prototype = {
 			this.queue = source_record;
 			this.logger.setQueueReference(source_record.sys_id);
 			
-			if (/^[\],:{}\s]*$/.test(source_record.payload.replace(/\\["\\\/bfnrtu]/g, '@').
-				replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
-			replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+			if (SIAMUtil.isJSON(source_record.payload)) {
 				this.record = new global.JSON().decode(source_record.payload);
-				
 			} else {
 				this.logger.logError('Received JSON Payload not valid.');
 			}
@@ -76,7 +73,11 @@ SIAMQueue.prototype = {
 						'result': null
 					};
 					
-					output_value = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result', this.field_map.use_json_datatype);
+					output_value = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result');
+					
+					if (SIAMUtil.isJSON(output_value)) {
+						output_value = new global.JSON().decode(output_value);
+					}
 					
 				} else if (this._isDateField(source_record, this.field_map.field)) {
 					var gd = new GlideDate();
@@ -467,7 +468,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>149</sys_mod_count>
+        <sys_mod_count>150</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -475,6 +476,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-03-21 21:05:13</sys_updated_on>
+        <sys_updated_on>2017-04-10 19:09:29</sys_updated_on>
     </sys_script_include>
 </record_update>

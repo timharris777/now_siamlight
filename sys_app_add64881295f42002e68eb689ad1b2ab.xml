@@ -5,7 +5,6 @@
         <enforce_license>log</enforce_license>
         <js_level>traditional</js_level>
         <licensable>true</licensable>
-        <license_model>none</license_model>
         <logo/>
         <menu display_value="SIAM Light">add600c1295f42002e68eb689ad1b237</menu>
         <name>SIAM Light</name>
