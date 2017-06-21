@@ -4,7 +4,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>name</element>
-            <list_id display_value="x_snc_siam_light_message_type" element="NULL" name="x_snc_siam_light_message_type" parent="NULL" relationship="NULL" sys_domain="global" view="e53d2732db311200b315f27eaf96195c">da131915bf166200d6cabdbaa361d03c</list_id>
+            <list_id display_value="x_snc_siam_light_message_type" element="NULL" name="x_snc_siam_light_message_type" parent="NULL" relationship="NULL" sys_domain="global" view="f21c324937313200b2e8021a54990eef">da131915bf166200d6cabdbaa361d03c</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -43,7 +43,7 @@
             <sys_updated_by>daniel.draes</sys_updated_by>
             <sys_updated_on>2016-10-05 09:28:17</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">e53d2732db311200b315f27eaf96195c</view>
+            <view display_value="Reference List" name="sys_ref_list">f21c324937313200b2e8021a54990eef</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>
