@@ -22,27 +22,24 @@
         <element dependent="rest_message" dependent_on_field="rest_message" label="Update Rest HTTP Method" max_length="32" name="update_rest_http_method" reference="sys_rest_message_fn" type="reference" use_dependent_field="true"/>
         <element dependent="soap_message" dependent_on_field="soap_message" label="Update SOAP Message Function" max_length="32" name="update_soap_message_function" reference="sys_soap_message_function" type="reference" use_dependent_field="true"/>
         <index name="index">
-            <element name="name"/>
-        </index>
-        <index name="index2">
             <element name="rest_http_method"/>
         </index>
-        <index name="index3">
+        <index name="index2">
             <element name="soap_message"/>
         </index>
-        <index name="index4">
+        <index name="index3">
             <element name="name"/>
         </index>
-        <index name="index5">
+        <index name="index4">
             <element name="update_rest_http_method"/>
         </index>
-        <index name="index6">
+        <index name="index5">
             <element name="rest_message"/>
         </index>
-        <index name="index7">
+        <index name="index6">
             <element name="soap_message_function"/>
         </index>
-        <index name="index8">
+        <index name="index7">
             <element name="update_soap_message_function"/>
         </index>
     </element>

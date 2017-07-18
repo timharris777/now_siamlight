@@ -65,7 +65,11 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2016-01-18 11:49:23</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>c5cd0cf44f67f200908b81c18110c741</sys_id>
+<<<<<<< HEAD
+            <sys_id>1a0cd0764f183e00908b81c18110c77c</sys_id>
+=======
+            <sys_id>094500fc372fb600b2e8021a54990e72</sys_id>
+>>>>>>> parent of d10588f... stashed changes from DEV
             <sys_mod_count>27</sys_mod_count>
             <sys_name>outbound_type</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
