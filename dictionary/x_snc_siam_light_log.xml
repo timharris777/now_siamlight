@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="syslog0000" label="Log" max_length="40" name="x_snc_siam_light_log" type="collection">
+        <element label="Queue row" max_length="32" name="queue_row" reference="x_snc_siam_light_queue" type="reference"/>
+        <index name="index">
+            <element name="queue_row"/>
+        </index>
+    </element>
+</database>

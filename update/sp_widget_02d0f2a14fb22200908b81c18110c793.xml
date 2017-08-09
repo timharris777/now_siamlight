@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function() {
+  /* widget controller */
+	var c = this;
+	c.newTask = "";
+	
+	c.createTask = function() {
+		if (c.newTask.length === 0) return;
+		
+		c.data.newTask = {
+			description: c.newTask
+		}
+		c.data.action = "add_task";
+		c.newTask = "";
+		c.server.update();
+	}
+	
+	c.markTaskComplete = function($event, task) {
+		c.data.completedTask = task;
+		c.data.action = "complete_task";
+		c.server.update();
+	}
+	
+	c.clearCompletedTasks = function() {
+		c.data.action = "clear_completed_tasks";
+		c.server.update();
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.list-group-item.ng-enter {
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  
+  background-color: #c0dcfa;
+}
+
+.list-group-item.ng-enter-active {
+  background-color: #fff;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>todo</id>
+        <internal>false</internal>
+        <link/>
+        <name>Todo</name>
+        <option_schema>[{"name":"do_better","label":"Do something better","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+// populate the 'data' object
+// e.g., data.table = $sp.getValue('table');
+data.userID = gs.getUserID();
+
+if (input && input.action === "add_task") {
+	var newTaskGR = new GlideRecord("vtb_task");
+	newTaskGR.initialize();
+	newTaskGR.setValue("description", input.newTask.description);
+	newTaskGR.setValue("state", 2);
+	newTaskGR.insert();
+}
+
+if (input && input.action === "complete_task") {
+	var updatedTaskGR = new GlideRecord("vtb_task");
+	if (updatedTaskGR.get(input.completedTask.sys_id)) {
+		updatedTaskGR.state = 3;
+		updatedTaskGR.update();
+	}
+}
+
+if (input && input.action === "clear_completed_tasks") {
+	var completedTasksGR = new GlideRecord("vtb_task");
+	completedTasksGR.addQuery("owner", data.userID);
+	completedTasksGR.addQuery("state", 3);
+	completedTasksGR.deleteMultiple();
+}
+
+
+data.tasks = [];
+
+var personalTaskGR = new GlideRecord("vtb_task");
+personalTaskGR.addQuery("owner", data.userID);
+personalTaskGR.addQuery("state", 2);
+personalTaskGR.orderByDesc("sys_updated_on");
+personalTaskGR.query();
+
+while(personalTaskGR.next()) {
+	var task = {};
+	task.description = personalTaskGR.getValue("description");
+	task.sys_id = personalTaskGR.getUniqueValue();
+	data.tasks.push(task);
+}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>daniel.draes</sys_created_by>
+        <sys_created_on>2016-10-31 07:27:44</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>02d0f2a14fb22200908b81c18110c793</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Todo</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sp_widget_02d0f2a14fb22200908b81c18110c793</sys_update_name>
+        <sys_updated_by>daniel.draes</sys_updated_by>
+        <sys_updated_on>2016-10-31 08:46:15</sys_updated_on>
+        <template><![CDATA[<div>
+<div class="panel panel-default b">
+  <div class="panel-heading">
+    <h4 class="panel-title">Todos</h4>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <form ng-submit="c.createTask()">
+        <input class="form-control" type="text" ng-model="c.newTask" placeholder="Add a new task" />
+      </form>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="task in data.tasks track by task.sys_id">
+        <input type="checkbox" ng-click="c.markTaskComplete($event, task)" />
+        {{task.description}}
+      </li>
+    </ul>
+    <button ng-click="c.clearCompletedTasks()" class="btn btn-default">Clear completed tasks</button>
+  </div>
+</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

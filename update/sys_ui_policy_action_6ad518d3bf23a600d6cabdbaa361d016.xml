@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>ignore</disabled>
+        <field>field_transform_script</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>Richard.Szolar.admin</sys_created_by>
+        <sys_created_on>2016-12-12 13:27:08</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>6ad518d3bf23a600d6cabdbaa361d016</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>field_transform_script</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_ui_policy_action_6ad518d3bf23a600d6cabdbaa361d016</sys_update_name>
+        <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+        <sys_updated_on>2016-12-12 13:27:08</sys_updated_on>
+        <table>x_snc_siam_light_field_map</table>
+        <ui_policy display_value="Show/Hide Table Fieldname and Transform Script">244594d3bf23a600d6cabdbaa361d0ab</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>

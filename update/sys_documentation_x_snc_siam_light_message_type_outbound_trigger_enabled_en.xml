@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="outbound_trigger_enabled" label="Outbound Trigger Enabled" language="en" table="x_snc_siam_light_message_type">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>outbound_trigger_enabled</element>
+            <help/>
+            <hint/>
+            <label>Outbound Trigger Enabled</label>
+            <language>en</language>
+            <name>x_snc_siam_light_message_type</name>
+            <plural>Outbound Trigger Enabled</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>Richard.Szolar.admin</sys_created_by>
+            <sys_created_on>2016-12-06 15:34:38</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>4d8971ddbf676600d6cabdbaa361d00e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Outbound Trigger Enabled</sys_name>
+            <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_siam_light_message_type_outbound_trigger_enabled_en</sys_update_name>
+            <sys_updated_by>Richard.Szolar.admin</sys_updated_by>
+            <sys_updated_on>2016-12-06 15:34:38</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

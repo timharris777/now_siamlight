@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Structure Map" max_length="40" name="x_snc_siam_light_structure_map" type="collection">
+        <element choice="3" default="1" label="Cardinality" max_length="40" name="cardinality" type="choice">
+            <choice>
+                <element label="Many" sequence="0" value="n"/>
+                <element label="One" sequence="1" value="1"/>
+            </choice>
+        </element>
+        <element label="Store parent sys_id in child record" max_length="40" name="child_sysid" type="boolean"/>
+        <element dependent="parent_table" dependent_on_field="parent_table" label="Child value field name" max_length="80" name="child_value_field" type="field_name" use_dependent_field="true"/>
+        <element label="External fieldname" max_length="40" name="external_fieldname" type="string"/>
+        <element label="Included Message Type" max_length="32" name="included_message_type" reference="x_snc_siam_light_message_type" reference_cascade_rule="clear" reference_qual="javascript:new SIAMRefQualifiers().messageTypes()" type="reference" use_reference_qualifier="advanced"/>
+        <element label="Input Condition Script" max_length="254" name="input_condition_script" type="string"/>
+        <element label="Message type" max_length="32" name="message_type" reference="x_snc_siam_light_message_type" type="reference"/>
+        <element label="Output Condition" max_length="254" name="output_condition" type="string"/>
+        <element label="Store child sys_id in parent" max_length="40" name="parent_sysid" type="boolean"/>
+        <element attributes="base_start=true" label="Parent Table" max_length="80" name="parent_table" read_only="true" type="table_name"/>
+        <element dependent="table" dependent_on_field="table" label="Parent value field name" max_length="80" name="reference_value_field" type="field_name" use_dependent_field="true"/>
+        <element label="Child Table" max_length="80" name="table" read_only="true" type="table_name"/>
+        <index name="index">
+            <element name="message_type"/>
+        </index>
+        <index name="index2">
+            <element name="included_message_type"/>
+        </index>
+    </element>
+</database>

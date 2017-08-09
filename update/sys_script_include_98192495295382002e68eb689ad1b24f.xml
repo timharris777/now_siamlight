@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_siam_light.SIAMOutboundProcessor</api_name>
+        <client_callable>false</client_callable>
+        <description>Processes updated going outbound to other systems</description>
+        <name>SIAMOutboundProcessor</name>
+        <script><![CDATA[var SIAMOutboundProcessor = Class.create();
+SIAMOutboundProcessor.prototype = {
+	initialize: function() {
+	},
+	
+	/* checks if the given record has any active outbound trigger
+ 	* record: GlideRecord of any ServiceNow table
+ 	*/
+	isValidRecord: function(record) {
+		var table = record.getTableName();
+		
+		var gr_trigger = new GlideRecord('x_snc_siam_light_outbound_trigger');
+		gr_trigger.addQuery('table', table);
+		gr_trigger.addQuery('target.active', 'true');
+		gr_trigger.addQuery('action_' + record.operation(), 'true');
+		
+		gr_trigger.query();
+		var matches = false;
+		while (matches == false && gr_trigger.next()) {
+			matches = GlideFilter.checkRecord(record, gr_trigger.condition);
+		}
+		return matches;
+	},
+	
+	/* checks if given Queue entry is supposed to be send by SOAP
+ 	*/
+	isAutomatedMessage: function (record) {
+		if (record.target.active == true && (
+			record.message_type.outbound_type == 'soap' || record.message_type.outbound_type == 'rest'))
+		return true;
+		
+		return false;
+	},
+	
+	/* creates entry in SIAM Queue for further processing
+ 	*/
+	createQueueEntry: function (record) {
+		var table = record.getTableName();
+		
+		var gr_trigger = new GlideRecord('x_snc_siam_light_outbound_trigger');
+		gr_trigger.addQuery('table', table);
+		gr_trigger.addQuery('target.active', 'true');
+		gr_trigger.addQuery('action_' + record.operation(), 'true');
+		
+		gr_trigger.query();
+		//	 gs.addInfoMessage('Checking ' + gr_trigger.getRowCount() + ' number of trigger conditions on table ' + table);
+		while ( gr_trigger.next()) {
+			var matches = GlideFilter.checkRecord(record, gr_trigger.condition);
+			if (matches) {
+				//		gs.addInfoMessage('Record matching condition: ' + gr_trigger.condition);
+				var qu = new SIAMQueue(gr_trigger.message_type, gr_trigger.target);
+				qu.setSource(record);
+				qu.createOutput();
+			} else {
+				//		gs.addInfoMessage('Record **NOT** matching condition: ' + gr_trigger.condition);
+			}
+		}
+		
+	},
+	
+	/* processes an outbound queue entry for SOAP or REST
+ 	* @queue_entry GlideRecord of queue entry
+ 	*/
+	process: function (queue_entry) {
+		this.logger = new SIAMLogger(queue_entry.sys_id);
+		
+		try {
+			
+			var message = this._prepareMessage(queue_entry);
+			
+			// execute
+			this.logger.logInfo('Sending message to endpoint: ' + message.getEndpoint());
+			var response = message.execute();
+			var responseBody = response.getBody();
+			var status = response.getStatusCode();
+			this.logger.logInfo('Send Message, status: ' + status);
+			this.logger.logDebug('ResponseBody: ' + responseBody);
+			
+			
+			if (status == '200' || status == '201') {
+				queue_entry.state = 'processed';
+				
+				// in case of insert try to capture the external ID
+				if (!this.update) {
+					var uid = this._extractExternalId(queue_entry, responseBody);
+					
+					this.logger.logInfo('Target returned UID: ' + uid);
+					if (!gs.nil(uid)) {
+						var data_rec = new GlideRecord(queue_entry.reference_table);
+						data_rec.get(queue_entry.reference_record);
+						
+						var sid = new SIAMExtID(data_rec, queue_entry.target);
+						sid.registerExternalId(uid);
+					}
+				}
+				
+			} else {
+				queue_entry.state = 'error';
+				this.logger.logError('WebService returned error code: ' + status);
+			}
+			queue_entry.update();
+		}
+		
+		catch(ex) {
+			//		var message = ex.getMessage();
+			this.logger.logError('Abort with exception: ' + ex);
+			queue_entry.state = 'error';
+			queue_entry.update();
+		}
+	},
+	
+	/* parses the returned body for a unique identified
+ 	*/
+	_extractExternalId: function (queue_entry, responseBody) {
+		// extract UID
+		var mt = queue_entry.message_type.getRefRecord();
+		var uid_path = mt.getValue('uid_path');
+		var uid;
+		
+		if (SIAMUtil.notNil(mt.getValue('uid_path'))) {
+			
+			if (mt.outbound_type == 'soap') {
+				
+				var xmldoc = new XMLDocument2();
+				xmldoc.parseXML(responseBody);
+				uid = xmldoc.getNodeText(uid_path);
+				
+			} else if (mt.outbound_type == 'rest') {
+				// rest test
+				var path_elements = (uid_path + '').split('.');
+				var next_obj = new global.JSON().decode(responseBody);
+				for (var i=0; i<path_elements.length; i++) {
+					next_obj = next_obj[path_elements[i]];
+				}
+				uid = next_obj;
+			}
+			
+		}
+		
+		return uid;
+	},
+	
+	/* prepares a SOAP or REST message to be send
+ 	*/
+	_prepareMessage: function (queue_entry) {
+		var mt = queue_entry.message_type.getRefRecord();
+		
+		var ext_id = this._getExternalId(queue_entry);
+		
+		var msg;
+		var msg_function;
+		
+		// check for distinct update call
+		this.update = false;
+		if (mt.distinct_update == true && ext_id != '') {
+			this.update = true;
+			this.logger.logDebug('Entering update mode for external id: ' + ext_id);
+		}
+		
+		if (mt.outbound_type == 'soap') {
+			var soap_message = mt.soap_message.getRefRecord();
+			if (this.update) {
+				msg_function = mt.update_soap_message_function.function_name;
+			} else {
+				msg_function = mt.soap_message_function.function_name;
+			}
+			try {
+				msg = new sn_ws.SOAPMessageV2(soap_message.sys_scope.scope + '.' + soap_message.name, msg_function);
+			}
+			catch (ex) {
+				this.logger.logError('Error creating SOAP message object, check access level. Root cause: ' + ex);
+				return;
+			}
+			
+			
+		} else if (mt.outbound_type == 'rest') {
+			var rest_message = mt.rest_message.getRefRecord();
+			
+			try {
+				
+				if (this.update) {
+					msg_function = mt.update_rest_http_method.function_name;
+					msg = new sn_ws.RESTMessageV2(rest_message.sys_scope.scope + '.' + rest_message.name, msg_function);
+					
+					var endpoint = msg.getEndpoint() + '/' + ext_id;
+					this.logger.logDebug('Endpoint updated to: ' +msg.getEndpoint() + '/' + ext_id );
+					msg.setEndpoint(endpoint);
+				} else {
+					msg_function = mt.rest_http_method.function_name;
+					msg = new sn_ws.RESTMessageV2(rest_message.sys_scope.scope + '.' + rest_message.name, msg_function);
+					
+					
+				}
+				msg.setRequestHeader("Accept","application/json");
+				msg.setRequestHeader('Content-Type','application/json');
+				//msg.setRequestBody(queue_entry.payload);
+			}
+			catch (ex) {
+				this.logger.logError('Error creating REST message object, check access level. Root cause: ' + ex);
+				return;
+			}
+			
+		}
+		
+		// set fields / variable substitution
+		var record = new global.JSON().decode(queue_entry.payload);
+		var smp = new GlideRecord('x_snc_siam_light_field_map');
+		smp.addQuery('message_type', mt.sys_id);
+		smp.query();
+		while (smp.next()) {
+			var value = record[smp.external_fieldname];
+			if (smp.unqiue_id == true) {
+				value = ext_id;
+			}
+			this.logger.logDebug('Setting ' + smp.external_fieldname + ' to value <' + value +'>');
+			msg.setStringParameter(msg_function + '.' + smp.external_fieldname, value);
+			msg.setStringParameter(smp.external_fieldname, value);
+		}
+		
+		// overwrite body if required
+		if (mt.payload_is_body) {
+			this.logger.logDebug('Setting message body to SIAM payload');
+			msg.setRequestBody(queue_entry.payload);
+		}
+		
+		
+		return msg;
+	},
+	
+	_getExternalId: function(queue_entry) {
+		
+		// check for update need
+		var data_rec = new GlideRecord(queue_entry.reference_table);
+		data_rec.get(queue_entry.reference_record);
+		
+		var sid = new SIAMExtID(data_rec, queue_entry.target);
+		return sid.getExternalId();
+	},
+	
+	type: 'SIAMOutboundProcessor'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-10-23 07:05:35</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
+        <sys_mod_count>79</sys_mod_count>
+        <sys_name>SIAMOutboundProcessor</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_script_include_98192495295382002e68eb689ad1b24f</sys_update_name>
+        <sys_updated_by>daniel.draes</sys_updated_by>
+        <sys_updated_on>2017-03-15 14:43:32</sys_updated_on>
+    </sys_script_include>
+</record_update>

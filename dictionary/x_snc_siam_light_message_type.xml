@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Message type" max_length="40" name="x_snc_siam_light_message_type" type="collection">
+        <element label="Distinct Update" max_length="40" name="distinct_update" type="boolean"/>
+        <element label="Name" max_length="40" name="name" type="string" unique="true"/>
+        <element label="Outbound Trigger Enabled" max_length="40" name="outbound_trigger_enabled" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="generic" label="Outbound Type" max_length="40" name="outbound_type" type="string">
+            <choice>
+                <element label="Direct REST Call" sequence="0" value="rest"/>
+                <element label="Direct SOAP Call" sequence="1" value="soap"/>
+                <element label="Generic  Pull" sequence="2" value="generic"/>
+            </choice>
+        </element>
+        <element label="Use SIAM Payload as body" max_length="40" name="payload_is_body" type="boolean"/>
+        <element dependent="rest_message" dependent_on_field="rest_message" label="Rest HTTP Method" max_length="32" name="rest_http_method" reference="sys_rest_message_fn" type="reference" use_dependent_field="true"/>
+        <element label="REST Message" max_length="32" name="rest_message" reference="sys_rest_message" type="reference"/>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="Service Providers" max_length="1024" name="service_providers" reference="x_snc_siam_light_target" type="glide_list"/>
+        <element label="SOAP Message" max_length="32" name="soap_message" reference="sys_soap_message" type="reference"/>
+        <element dependent="soap_message" dependent_on_field="soap_message" label="SOAP Message Function" max_length="32" name="soap_message_function" reference="sys_soap_message_function" type="reference" use_dependent_field="true"/>
+        <element label="Table" max_length="80" name="table" type="table_name"/>
+        <element label="Unique ID Path" max_length="40" name="uid_path" type="string"/>
+        <element dependent="rest_message" dependent_on_field="rest_message" label="Update Rest HTTP Method" max_length="32" name="update_rest_http_method" reference="sys_rest_message_fn" type="reference" use_dependent_field="true"/>
+        <element dependent="soap_message" dependent_on_field="soap_message" label="Update SOAP Message Function" max_length="32" name="update_soap_message_function" reference="sys_soap_message_function" type="reference" use_dependent_field="true"/>
+        <index name="index">
+            <element name="name"/>
+        </index>
+        <index name="index2">
+            <element name="rest_http_method"/>
+        </index>
+        <index name="index3">
+            <element name="soap_message"/>
+        </index>
+        <index name="index4">
+            <element name="name"/>
+        </index>
+        <index name="index5">
+            <element name="update_rest_http_method"/>
+        </index>
+        <index name="index6">
+            <element name="rest_message"/>
+        </index>
+        <index name="index7">
+            <element name="soap_message_function"/>
+        </index>
+        <index name="index8">
+            <element name="update_soap_message_function"/>
+        </index>
+    </element>
+</database>
