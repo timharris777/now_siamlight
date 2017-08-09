@@ -50,11 +50,8 @@ SIAMQueue.prototype = {
 			this.queue = source_record;
 			this.logger.setQueueReference(source_record.sys_id);
 			
-			if (/^[\],:{}\s]*$/.test(source_record.payload.replace(/\\["\\\/bfnrtu]/g, '@').
-				replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
-			replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+			if (SIAMUtil.isJSON(source_record.payload)) {
 				this.record = new global.JSON().decode(source_record.payload);
-				
 			} else {
 				this.logger.logError('Received JSON Payload not valid.');
 			}
@@ -76,7 +73,11 @@ SIAMQueue.prototype = {
 						'result': null
 					};
 					
-					output_value = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result', this.field_map.use_json_datatype);
+					output_value = this._evaluateScript(this.field_map, 'field_transform_script', vars, 'result');
+					
+					if (SIAMUtil.isJSON(output_value)) {
+						output_value = new global.JSON().decode(output_value);
+					}
 					
 				} else if (this._isDateField(source_record, this.field_map.field)) {
 					var gd = new GlideDate();
@@ -116,7 +117,7 @@ SIAMQueue.prototype = {
 				var siamq;
 				if (gr_structure.cardinality == 'n') {
 					this.record[gr_structure.external_fieldname] = [];
-				
+					
 					while (gr_child.next()) {
 						siamq = new SIAMQueue(gr_structure.included_message_type, this.target);
 						siamq.setSource(gr_child);
@@ -136,7 +137,7 @@ SIAMQueue.prototype = {
 		}
 	},
 	
-	updateRecord: function() {
+	updateRecord: function(skipActionCheck) {
 		var gr_target;
 		var created_sysid = '0';
 		
@@ -191,24 +192,25 @@ SIAMQueue.prototype = {
 				}
 			}
 			
-			// verify supplied action matches our state
-			if (gs.nil(gr_target))  {
-				if (this.queue.action != 'insert' && this.queue.action != 'insert_or_update') {
-					this.logger.logError('Record does not exist, need insert action');
-					return false;
+			// verify supplied action matches our state only if not skip
+			// skip is used for child structures as the action has been checked on primary entity
+				if (gs.nil(gr_target))  {
+					if (!skipActionCheck && this.queue.action != 'insert' && this.queue.action != 'insert_or_update') {
+						this.logger.logError('Record does not exist, need insert action');
+						return false;
+					}
+					this.logger.logInfo('No existing target found, creating new record in table ' + this.msgType.table);
+					gr_target =  new GlideRecord(this.msgType.table);
+					gr_target.initialize();
+				} else {
+					if (!skipActionCheck && this.queue.action != 'update' && this.queue.action != 'insert_or_update' && this.queue.action != 'delete') {
+						this.logger.logError('Record already exists, need update action');
+						return false;
+					}
+					this.logger.logInfo('Found existing target record: ' + gr_target.getDisplayValue());
 				}
-				this.logger.logInfo('No existing target found, creating new record in table ' + this.msgType.table);
-				gr_target =  new GlideRecord(this.msgType.table);
-				gr_target.initialize();
-			} else {
-				if (this.queue.action != 'update' && this.queue.action != 'insert_or_update' && this.queue.action != 'delete') {
-					this.logger.logError('Record already exists, need update action');
-					return false;
-				}
-				this.logger.logInfo('Found existing target record: ' + gr_target.getDisplayValue());
-			}
 			
-			if (this.queue.action == 'delete') {
+			if (!skipActionCheck && this.queue.action == 'delete') {
 				this.logger.logInfo('Deleting target record due to defined action');
 				if (!gr_target.deleteRecord()) {
 					this.logger.logError('Could not delete record due to: ' + gr_target.getLastErrorMessage());
@@ -284,7 +286,7 @@ SIAMQueue.prototype = {
 								siamq._setReferenceInfo(gr_structure.reference_value_field, gr_target.sys_id);
 							}
 						}
-						var child_sys_id = siamq.updateRecord();
+						var child_sys_id = siamq.updateRecord(true);
 						
 						if (gr_target && gr_structure.parent_sysid && child_sys_id) {
 							this.logger.logInfo('Updating parent table field ' + gr_structure.child_value_field + ' with reference to ' + child_sys_id);
@@ -320,7 +322,7 @@ SIAMQueue.prototype = {
 	
 	_setPayloadValue: function(field, value, use_json_type) {
 		if (value != undefined) {
-			// default to string 
+			// default to string
 			var v;
 			
 			if (use_json_type) {
@@ -467,7 +469,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>149</sys_mod_count>
+        <sys_mod_count>151</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -475,6 +477,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-03-21 21:05:13</sys_updated_on>
+        <sys_updated_on>2017-07-19 09:37:26</sys_updated_on>
     </sys_script_include>
 </record_update>

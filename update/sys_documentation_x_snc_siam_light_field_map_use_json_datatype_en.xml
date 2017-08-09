@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2017-03-21 20:43:34</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>2a2fe703dbe53600b315f27eaf96192e</sys_id>
             <sys_mod_count>2</sys_mod_count>
             <sys_name>Use JSON Datatype</sys_name>

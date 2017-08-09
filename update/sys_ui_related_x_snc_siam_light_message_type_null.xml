@@ -53,7 +53,7 @@
             <sys_class_name>sys_ui_related_list</sys_class_name>
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-10-05 13:27:57</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>18c62c55295382002e68eb689ad1b2aa</sys_id>

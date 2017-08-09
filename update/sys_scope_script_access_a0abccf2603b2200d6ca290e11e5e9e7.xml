@@ -48,7 +48,7 @@
         <sys_class_name>sys_scope_script_access</sys_class_name>
         <sys_created_by>Richard.Szolar.admin</sys_created_by>
         <sys_created_on>2016-12-23 09:41:06</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>a0abccf2603b2200d6ca290e11e5e9e7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>SysList</sys_name>

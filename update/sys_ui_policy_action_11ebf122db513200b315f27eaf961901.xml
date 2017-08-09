@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2017-03-07 12:47:25</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>11ebf122db513200b315f27eaf961901</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>payload_is_body</sys_name>

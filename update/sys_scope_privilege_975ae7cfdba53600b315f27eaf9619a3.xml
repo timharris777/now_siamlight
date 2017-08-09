@@ -7,7 +7,7 @@
         <sys_class_name>sys_scope_privilege</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2017-03-21 20:22:35</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>975ae7cfdba53600b315f27eaf9619a3</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Glide API: properties</sys_name>

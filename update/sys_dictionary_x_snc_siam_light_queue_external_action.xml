@@ -47,7 +47,7 @@
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-12-12 13:24:10</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>ac3554d3bf23a600d6cabdbaa361d0e7</sys_id>
+        <sys_id>a06bf7104fa00700908b81c18110c726</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>External Action</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -55,8 +55,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_siam_light_queue_external_action</sys_update_name>
-        <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-01-17 07:23:59</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-08-09 11:42:26</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

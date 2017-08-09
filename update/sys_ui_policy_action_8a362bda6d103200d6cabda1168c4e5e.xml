@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2017-01-16 08:50:43</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>8a362bda6d103200d6cabda1168c4e5e</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>table</sys_name>

@@ -251,7 +251,7 @@ SIAMOutboundProcessor.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-23 07:05:35</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
         <sys_mod_count>79</sys_mod_count>
         <sys_name>SIAMOutboundProcessor</sys_name>

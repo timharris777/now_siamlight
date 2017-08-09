@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-10-05 13:24:08</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>4119061dbf566200d6cabdbaa361d075</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_siam_light_structure_map.x_snc_siam_light.user</sys_name>

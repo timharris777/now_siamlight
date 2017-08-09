@@ -29,7 +29,7 @@ SIAMRefQualifiers.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-10-05 13:44:40</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>f96d4e11bf966200d6cabdbaa361d09c</sys_id>
         <sys_mod_count>5</sys_mod_count>
         <sys_name>SIAMRefQualifiers</sys_name>

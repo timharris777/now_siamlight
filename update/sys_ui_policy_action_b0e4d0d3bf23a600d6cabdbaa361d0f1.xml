@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>Richard.Szolar.admin</sys_created_by>
         <sys_created_on>2016-12-12 13:23:04</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>b0e4d0d3bf23a600d6cabdbaa361d0f1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>external_fieldname_transform_script</sys_name>

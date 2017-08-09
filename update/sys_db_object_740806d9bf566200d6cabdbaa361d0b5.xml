@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-10-05 13:24:07</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>740806d9bf566200d6cabdbaa361d0b5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Structure Map</sys_name>
