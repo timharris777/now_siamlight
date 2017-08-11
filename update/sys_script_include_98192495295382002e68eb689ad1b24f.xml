@@ -34,7 +34,7 @@ SIAMOutboundProcessor.prototype = {
 	/* checks if given Queue entry is supposed to be send by SOAP
  	*/
 	isAutomatedMessage: function (record) {
-		if (record.target.active == true && (
+		if (record.direction == 'output' && record.target.active == true && (
 			record.message_type.outbound_type == 'soap' || record.message_type.outbound_type == 'rest'))
 		return true;
 		
@@ -251,9 +251,9 @@ SIAMOutboundProcessor.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2015-10-23 07:05:35</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
-        <sys_mod_count>79</sys_mod_count>
+        <sys_mod_count>80</sys_mod_count>
         <sys_name>SIAMOutboundProcessor</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -261,6 +261,6 @@ SIAMOutboundProcessor.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_98192495295382002e68eb689ad1b24f</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-03-15 14:43:32</sys_updated_on>
+        <sys_updated_on>2017-08-11 08:17:55</sys_updated_on>
     </sys_script_include>
 </record_update>
