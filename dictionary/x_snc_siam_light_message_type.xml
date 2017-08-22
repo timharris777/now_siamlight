@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Message type" max_length="40" name="x_snc_siam_light_message_type" type="collection">
+        <element label="Description" max_length="4000" name="description" type="string"/>
         <element label="Distinct Update" max_length="40" name="distinct_update" type="boolean"/>
         <element label="Name" max_length="40" name="name" type="string" unique="true"/>
         <element label="Outbound Trigger Enabled" max_length="40" name="outbound_trigger_enabled" type="boolean"/>
