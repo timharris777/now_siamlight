@@ -198,7 +198,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>8eb1fcd8ef423000a61d5a3615c0fb55</sys_id>
-            <sys_mod_count>14</sys_mod_count>
+            <sys_mod_count>15</sys_mod_count>
             <sys_name>sys_dictionary</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
             <sys_policy/>
@@ -206,7 +206,7 @@
             <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
             <sys_update_name>sys_ui_list_sys_db_object_4344f6f5bf1320001875647fcf0739ad_null</sys_update_name>
             <sys_updated_by>daniel.draes</sys_updated_by>
-            <sys_updated_on>2017-03-21 21:09:17</sys_updated_on>
+            <sys_updated_on>2017-08-22 09:37:20</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>
