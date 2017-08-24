@@ -352,7 +352,12 @@ SIAMQueue.prototype = {
 	_setRecordValue: function(gr, field, value) {
 		if (value != undefined) {
 			this.logger.logDebug('Inbound Mapping: Set ' + field + ' to ' + value );
-			gr.setValue(field, value);
+// ... should be done, but is not allowed in scoped app. See FTASK32307
+//			if (this._isJournalField(gr, field)) {
+//				gr[field].setJournalEntry(value);
+//			} else {
+				gr.setValue(field, value);
+//			}
 		}
 	},
 	
@@ -445,6 +450,23 @@ SIAMQueue.prototype = {
 	},
 	
 	
+	_isJournalField: function(record, field) {
+		
+		this.logger.logDebug('Checking field ' + field + ' for journel type on table ' + record.getRecordClassName());
+		try {
+			if (record && field) {
+				var field_type = record.getElement(field).getED().getInternalType();
+				if (field_type == "journal_input" || field_type == "journal") {
+					return true;
+				}
+			}
+		} catch (e) {
+			this.logger.logError('Could not get internal type for field ' + field);
+		}
+		return false;
+		
+	},
+	
 	_isDateField: function (record, field) {
 		
 		this.logger.logDebug('Checking field ' + field + ' for date type on table ' + record.getRecordClassName());
@@ -469,7 +491,7 @@ SIAMQueue.prototype = {
         <sys_created_on>2015-10-22 12:55:49</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d5ab24cd295f42002e68eb689ad1b2df</sys_id>
-        <sys_mod_count>151</sys_mod_count>
+        <sys_mod_count>154</sys_mod_count>
         <sys_name>SIAMQueue</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
@@ -477,6 +499,6 @@ SIAMQueue.prototype = {
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_d5ab24cd295f42002e68eb689ad1b2df</sys_update_name>
         <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-07-19 09:37:26</sys_updated_on>
+        <sys_updated_on>2017-08-23 15:39:16</sys_updated_on>
     </sys_script_include>
 </record_update>
