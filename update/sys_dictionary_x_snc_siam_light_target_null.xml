@@ -3,6 +3,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="" table="x_snc_siam_light_target">
         <active>true</active>
         <array>false</array>
+        <array_denormalized>false</array_denormalized>
         <attributes/>
         <audit>false</audit>
         <calculation/>
