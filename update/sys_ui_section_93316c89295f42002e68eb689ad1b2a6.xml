@@ -179,7 +179,6 @@
             <sys_created_on>2015-10-22 11:52:26</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>93316c89295f42002e68eb689ad1b2a6</sys_id>
             <sys_mod_count>23</sys_mod_count>
             <sys_name>x_snc_siam_light_queue</sys_name>

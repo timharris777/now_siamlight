@@ -28,7 +28,6 @@
         <sys_created_on>2016-04-23 19:55:21</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>cf24b1d0db435600b315f27eaf9619df</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Update Rest method</sys_name>

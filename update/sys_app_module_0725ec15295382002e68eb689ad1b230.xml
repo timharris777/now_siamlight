@@ -27,7 +27,6 @@
         <sys_created_on>2015-10-23 06:48:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>0725ec15295382002e68eb689ad1b230</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Outbound Triggers</sys_name>

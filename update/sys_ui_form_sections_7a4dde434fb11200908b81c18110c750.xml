@@ -6,7 +6,6 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-03-01 08:39:16</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>3e4dde434fb11200908b81c18110c750</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
@@ -20,7 +19,6 @@
             <sys_created_by>Richard.Szolar.admin</sys_created_by>
             <sys_created_on>2016-12-12 14:03:44</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>904e9817bf23a600d6cabdbaa361d035</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
@@ -34,7 +32,6 @@
             <sys_created_by>Richard.Szolar.admin</sys_created_by>
             <sys_created_on>2016-12-12 14:03:44</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>184e9817bf23a600d6cabdbaa361d035</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
@@ -51,7 +48,6 @@
             <sys_created_on>2016-03-01 08:39:16</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>7a4dde434fb11200908b81c18110c750</sys_id>
             <sys_mod_count>22</sys_mod_count>
             <sys_name>x_snc_siam_light_field_map</sys_name>

@@ -5,11 +5,15 @@
         <access>package_private</access>
         <action_delete>true</action_delete>
         <action_insert>false</action_insert>
+        <action_label/>
+        <action_name/>
         <action_query>false</action_query>
+        <action_run_at/>
         <action_update>false</action_update>
         <active>true</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
+        <application/>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>x_snc_siam_light_m2m_users_targets</collection>
@@ -20,8 +24,10 @@
         <is_rest>false</is_rest>
         <message/>
         <name>Remove Role from User</name>
+        <onclick/>
         <order>100</order>
         <priority>100</priority>
+        <read_access_action>false</read_access_action>
         <rest_method/>
         <rest_method_text/>
         <rest_service/>
@@ -39,7 +45,6 @@
         <sys_created_on>2016-02-29 21:29:41</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>2e73040737755200b2e8021a54990e77</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>Remove Role from User</sys_name>
@@ -54,5 +59,4 @@
         <template/>
         <when>after</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=2e73040737755200b2e8021a54990e77"/>
 </record_update>

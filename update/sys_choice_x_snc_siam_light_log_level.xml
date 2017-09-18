@@ -13,7 +13,6 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-06-02 09:01:35</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>604e99814fbf1600908b81c18110c7a1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
@@ -32,7 +31,6 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-06-02 09:01:35</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>684e99814fbf1600908b81c18110c7a1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
@@ -51,7 +49,6 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-06-02 09:01:35</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>ac4e99814fbf1600908b81c18110c7a1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
@@ -70,7 +67,6 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-06-02 09:01:35</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>e04e99814fbf1600908b81c18110c7a2</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>daniel.draes</sys_updated_by>
@@ -84,7 +80,7 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-06-02 09:01:35</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>7f7b3b104fa00700908b81c18110c7e8</sys_id>
+            <sys_id>a65504addb198300a592f9041d9619de</sys_id>
             <sys_mod_count>16</sys_mod_count>
             <sys_name>level</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>

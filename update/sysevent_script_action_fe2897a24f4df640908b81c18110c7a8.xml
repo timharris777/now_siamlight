@@ -43,7 +43,6 @@
         <sys_created_on>2017-02-23 09:15:14</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>fe2897a24f4df640908b81c18110c7a8</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>Process inbound SIAM entry</sys_name>

@@ -13,7 +13,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-03 21:08:31</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>4a93980529a346002e68eb689ad1b22d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
@@ -32,7 +31,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-03 21:08:31</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>4e93980529a346002e68eb689ad1b22d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
@@ -46,7 +44,7 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-03 21:08:31</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>3f7b3b104fa00700908b81c18110c7e7</sys_id>
+            <sys_id>665504addb198300a592f9041d9619da</sys_id>
             <sys_mod_count>23</sys_mod_count>
             <sys_name>output_value</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>

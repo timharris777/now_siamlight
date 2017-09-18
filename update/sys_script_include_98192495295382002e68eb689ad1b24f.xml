@@ -34,6 +34,8 @@ SIAMOutboundProcessor.prototype = {
 	/* checks if given Queue entry is supposed to be send by SOAP
  	*/
 	isAutomatedMessage: function (record) {
+//		if (record.target.active == true && (
+//			record.message_type.outbound_type == 'soap' || record.message_type.outbound_type == 'rest'))
 		if (record.direction == 'output' && record.target.active == true && (
 			record.message_type.outbound_type == 'soap' || record.message_type.outbound_type == 'rest'))
 		return true;
@@ -78,12 +80,14 @@ SIAMOutboundProcessor.prototype = {
 			var message = this._prepareMessage(queue_entry);
 			
 			// execute
+			this.logger.logDebug('Message Body: ' + message.getRequestBody());
 			this.logger.logInfo('Sending message to endpoint: ' + message.getEndpoint());
 			var response = message.execute();
 			var responseBody = response.getBody();
 			var status = response.getStatusCode();
 			this.logger.logInfo('Send Message, status: ' + status);
-			queue_entry.response_body = responseBody;
+			this.logger.logDebug('ResponseBody: ' + responseBody);
+			
 			
 			if (status == '200' || status == '201') {
 				queue_entry.state = 'processed';
@@ -199,6 +203,9 @@ SIAMOutboundProcessor.prototype = {
 					
 					
 				}
+				msg.setRequestHeader("Accept","application/json");
+				msg.setRequestHeader('Content-Type','application/json');
+				//msg.setRequestBody(queue_entry.payload);
 			}
 			catch (ex) {
 				this.logger.logError('Error creating REST message object, check access level. Root cause: ' + ex);
@@ -209,6 +216,10 @@ SIAMOutboundProcessor.prototype = {
 		
 		// set fields / variable substitution
 		var record = new global.JSON().decode(queue_entry.payload);
+		var payload = queue_entry.payload+'';
+		this.logger.logDebug('Payload: ' + payload);
+		var esc_payload = payload.replace(/"/g,'\\"');
+		this.logger.logDebug('Escaped Payload: ' + esc_payload);
 		var smp = new GlideRecord('x_snc_siam_light_field_map');
 		smp.addQuery('message_type', mt.sys_id);
 		smp.query();
@@ -220,6 +231,7 @@ SIAMOutboundProcessor.prototype = {
 			this.logger.logDebug('Setting ' + smp.external_fieldname + ' to value <' + value +'>');
 			msg.setStringParameter(msg_function + '.' + smp.external_fieldname, value);
 			msg.setStringParameter(smp.external_fieldname, value);
+			msg.setStringParameterNoEscape('payload',esc_payload);
 		}
 		
 		// overwrite body if required
@@ -249,14 +261,14 @@ SIAMOutboundProcessor.prototype = {
         <sys_created_on>2015-10-23 07:05:35</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>98192495295382002e68eb689ad1b24f</sys_id>
-        <sys_mod_count>83</sys_mod_count>
+        <sys_mod_count>85</sys_mod_count>
         <sys_name>SIAMOutboundProcessor</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_script_include_98192495295382002e68eb689ad1b24f</sys_update_name>
-        <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2017-08-23 11:29:18</sys_updated_on>
+        <sys_updated_by>tim.harris</sys_updated_by>
+        <sys_updated_on>2017-09-18 21:50:15</sys_updated_on>
     </sys_script_include>
 </record_update>

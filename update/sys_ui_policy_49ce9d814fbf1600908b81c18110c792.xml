@@ -25,7 +25,6 @@
         <sys_created_on>2016-06-02 09:04:03</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>49ce9d814fbf1600908b81c18110c792</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Lock all fields on display</sys_name>

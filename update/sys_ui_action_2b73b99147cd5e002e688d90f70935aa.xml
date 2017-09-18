@@ -10,6 +10,7 @@
         <form_button>false</form_button>
         <form_context_menu>false</form_context_menu>
         <form_link>true</form_link>
+        <form_style/>
         <hint/>
         <list_action>false</list_action>
         <list_banner_button>false</list_banner_button>
@@ -18,6 +19,7 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
         <name>Automap Variable to Fields</name>
         <onclick/>
         <order>100</order>
@@ -70,7 +72,6 @@ action.setRedirectURL(current);]]></script>
         <sys_created_on>2016-01-18 12:25:53</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>2b73b99147cd5e002e688d90f70935aa</sys_id>
         <sys_mod_count>23</sys_mod_count>
         <sys_name>Automap Variable to Fields</sys_name>

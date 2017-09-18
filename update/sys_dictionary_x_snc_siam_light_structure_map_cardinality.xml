@@ -6,12 +6,12 @@
         <array_denormalized>false</array_denormalized>
         <attributes/>
         <audit>false</audit>
-        <calculation><![CDATA[(function calculatedFieldValue(current) {
+        <calculation>(function calculatedFieldValue(current) {
 
 	// Add your code here
 	return '';  // return the calculated value
 
-})(current);]]></calculation>
+})(current);</calculation>
         <choice>3</choice>
         <choice_field/>
         <choice_table/>
@@ -53,7 +53,7 @@
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-10-05 13:24:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>746bf7104fa00700908b81c18110c739</sys_id>
+        <sys_id>3a358c6ddb198300a592f9041d9619dc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Cardinality</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -62,7 +62,7 @@
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_siam_light_structure_map_cardinality</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2017-08-09 11:42:28</sys_updated_on>
+        <sys_updated_on>2017-09-18 21:46:28</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

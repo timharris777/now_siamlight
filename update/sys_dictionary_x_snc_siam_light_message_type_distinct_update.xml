@@ -48,7 +48,7 @@
         <sys_created_by>daniel.draes</sys_created_by>
         <sys_created_on>2016-04-23 19:51:36</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>0d6bf7104fa00700908b81c18110c74d</sys_id>
+        <sys_id>0b358c6ddb198300a592f9041d9619fa</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Distinct Update</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
@@ -57,7 +57,7 @@
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_siam_light_message_type_distinct_update</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2017-08-09 11:42:21</sys_updated_on>
+        <sys_updated_on>2017-09-18 21:46:19</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

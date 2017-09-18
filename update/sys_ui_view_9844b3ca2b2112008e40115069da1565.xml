@@ -3,23 +3,23 @@
     <sys_ui_view action="INSERT_OR_UPDATE">
         <group/>
         <hidden>false</hidden>
-        <name>cmdb_dashboard</name>
+        <name>ask_question</name>
         <roles/>
         <sys_class_name>sys_ui_view</sys_class_name>
-        <sys_created_by>daniel.draes</sys_created_by>
-        <sys_created_on>2016-07-22 09:43:26</sys_created_on>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-02-03 09:22:58</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>7c5703014f3caa00908b81c18110c743</sys_id>
+        <sys_id>9844b3ca2b2112008e40115069da1565</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Cmdb_dashboard</sys_name>
+        <sys_name>Ask_question</sys_name>
         <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
-        <sys_update_name>sys_ui_view_7c5703014f3caa00908b81c18110c743</sys_update_name>
-        <sys_updated_by>daniel.draes</sys_updated_by>
-        <sys_updated_on>2016-07-22 09:43:26</sys_updated_on>
-        <title>Cmdb_dashboard</title>
+        <sys_update_name>sys_ui_view_9844b3ca2b2112008e40115069da1565</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-02-03 09:22:58</sys_updated_on>
+        <title>Ask_question</title>
         <user/>
     </sys_ui_view>
 </record_update>

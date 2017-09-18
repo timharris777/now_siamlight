@@ -27,7 +27,6 @@
         <sys_created_on>2016-01-18 11:53:45</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>256daddd478d5e002e688d90f70935fc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>REST Message</sys_name>

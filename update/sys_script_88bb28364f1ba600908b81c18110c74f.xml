@@ -5,11 +5,15 @@
         <access>package_private</access>
         <action_delete>false</action_delete>
         <action_insert>true</action_insert>
+        <action_label/>
+        <action_name/>
         <action_query>false</action_query>
+        <action_run_at/>
         <action_update>true</action_update>
         <active>false</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
+        <application/>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>x_snc_siam_light_outbound_trigger</collection>
@@ -22,8 +26,10 @@
         <is_rest>false</is_rest>
         <message/>
         <name>Check outbound triggers</name>
+        <onclick/>
         <order>100</order>
         <priority>100</priority>
+        <read_access_action>false</read_access_action>
         <rest_method/>
         <rest_method_text/>
         <rest_service/>
@@ -64,7 +70,6 @@
         <sys_created_on>2016-11-28 15:40:55</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>88bb28364f1ba600908b81c18110c74f</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Check outbound triggers</sys_name>
@@ -79,5 +84,4 @@
         <template/>
         <when>after</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=88bb28364f1ba600908b81c18110c74f"/>
 </record_update>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message">
+    <sys_rest_message action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <authentication_type>basic</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile display_value="">799b7d9b0fef7e404a98e64be1050eb7</basic_auth_profile>
+        <basic_auth_user/>
+        <description/>
+        <name>SandeepInstance</name>
+        <oauth2_profile/>
+        <protocol_name/>
+        <rest_endpoint>https://dev18810.service-now.com</rest_endpoint>
+        <sys_class_name>sys_rest_message</sys_class_name>
+        <sys_created_by>sandeep.gunnam</sys_created_by>
+        <sys_created_on>2017-06-29 17:03:20</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>6a6b3d9b0fef7e404a98e64be1050e2f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SandeepInstance</sys_name>
+        <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SIAM Light">add64881295f42002e68eb689ad1b2ab</sys_scope>
+        <sys_update_name>sys_rest_message_6a6b3d9b0fef7e404a98e64be1050e2f</sys_update_name>
+        <sys_updated_by>sandeep.gunnam</sys_updated_by>
+        <sys_updated_on>2017-06-29 17:03:20</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message>
+</record_update>

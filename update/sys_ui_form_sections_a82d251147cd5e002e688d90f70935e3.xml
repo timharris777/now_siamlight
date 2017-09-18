@@ -6,7 +6,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2016-01-18 11:52:23</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>ac2d251147cd5e002e688d90f70935e3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_overrides/>
@@ -20,7 +19,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2016-01-18 11:52:23</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>ec2d251147cd5e002e688d90f70935e3</sys_id>
             <sys_mod_count>2</sys_mod_count>
             <sys_overrides/>
@@ -34,7 +32,6 @@
             <sys_created_by>daniel.draes</sys_created_by>
             <sys_created_on>2016-04-23 20:14:05</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>31983514db435600b315f27eaf96198a</sys_id>
             <sys_mod_count>2</sys_mod_count>
             <sys_overrides/>
@@ -51,7 +48,6 @@
             <sys_created_on>2016-01-18 11:52:23</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>a82d251147cd5e002e688d90f70935e3</sys_id>
             <sys_mod_count>16</sys_mod_count>
             <sys_name>x_snc_siam_light_message_type</sys_name>

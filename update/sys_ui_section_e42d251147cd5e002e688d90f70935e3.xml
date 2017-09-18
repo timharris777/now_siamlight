@@ -190,7 +190,6 @@
             <sys_created_on>2016-01-18 11:52:23</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>e42d251147cd5e002e688d90f70935e3</sys_id>
             <sys_mod_count>23</sys_mod_count>
             <sys_name>Outbound configuration</sys_name>

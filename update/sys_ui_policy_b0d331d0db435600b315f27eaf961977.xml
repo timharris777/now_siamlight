@@ -28,7 +28,6 @@
         <sys_created_on>2016-04-23 19:53:45</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>b0d331d0db435600b315f27eaf961977</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Update SOAP function</sys_name>

@@ -5,11 +5,15 @@
         <access>package_private</access>
         <action_delete>false</action_delete>
         <action_insert>false</action_insert>
+        <action_label/>
+        <action_name/>
         <action_query>true</action_query>
+        <action_run_at/>
         <action_update>false</action_update>
         <active>true</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
+        <application/>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>x_snc_siam_light_field_map</collection>
@@ -22,8 +26,10 @@
         <is_rest>false</is_rest>
         <message/>
         <name>Set Table value from Message Type</name>
+        <onclick/>
         <order>100</order>
         <priority>100</priority>
+        <read_access_action>false</read_access_action>
         <rest_method/>
         <rest_method_text/>
         <rest_service/>
@@ -38,7 +44,6 @@
         <sys_created_on>2015-10-23 06:19:03</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_domain_path>/</sys_domain_path>
         <sys_id>3f1edc91295382002e68eb689ad1b2fe</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>Set Table value from Message Type</sys_name>
@@ -53,5 +58,4 @@
         <template>tableSAMEASmessage_type.table^EQ</template>
         <when>before_display</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=3f1edc91295382002e68eb689ad1b2fe"/>
 </record_update>

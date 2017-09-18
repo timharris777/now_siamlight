@@ -4,7 +4,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>name</element>
-            <list_id display_value="x_snc_siam_light_target" element="NULL" name="x_snc_siam_light_target" parent="NULL" relationship="NULL" sys_domain="global" view="e53d2732db311200b315f27eaf96195c">0a772095295382002e68eb689ad1b2c3</list_id>
+            <list_id display_value="x_snc_siam_light_target" element="NULL" name="x_snc_siam_light_target" parent="NULL" relationship="NULL" sys_domain="global" view="a82bc0208720200091cdf1166a434d18">0a772095295382002e68eb689ad1b2c3</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -31,7 +31,6 @@
             <sys_created_on>2015-10-23 06:58:08</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>0a772095295382002e68eb689ad1b2c3</sys_id>
             <sys_mod_count>18</sys_mod_count>
             <sys_name>x_snc_siam_light_target</sys_name>
@@ -43,7 +42,7 @@
             <sys_updated_by>daniel.draes</sys_updated_by>
             <sys_updated_on>2017-08-22 09:37:15</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">e53d2732db311200b315f27eaf96195c</view>
+            <view display_value="Reference List" name="sys_ref_list">a82bc0208720200091cdf1166a434d18</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>

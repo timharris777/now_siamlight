@@ -13,7 +13,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-06 09:09:32</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>47cb81bd292f46002e68eb689ad1b278</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
@@ -32,7 +31,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-06 09:09:32</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>43cb81bd292f46002e68eb689ad1b279</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
@@ -51,7 +49,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-06 09:09:32</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>cbcb81bd292f46002e68eb689ad1b279</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
@@ -70,7 +67,6 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-06 09:09:32</sys_created_on>
             <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
             <sys_id>47cb81bd292f46002e68eb689ad1b27a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
@@ -84,7 +80,7 @@
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2015-11-06 09:09:32</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>408b3b104fa00700908b81c18110c7f3</sys_id>
+            <sys_id>265544addb198300a592f9041d961909</sys_id>
             <sys_mod_count>21</sys_mod_count>
             <sys_name>state</sys_name>
             <sys_package display_value="SIAM Light" source="x_snc_siam_light">add64881295f42002e68eb689ad1b2ab</sys_package>
